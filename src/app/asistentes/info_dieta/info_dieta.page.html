@@ -1,0 +1,46 @@
+<ion-header>
+	<ion-toolbar style="--background: transparent;">
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		NUTRICION
+	</ion-toolbar>
+	<ion-toolbar style="    --background: #0000009e;
+    font-style: oblique;
+    font-weight: bold;
+    color: white;">
+		<span>{{dieta.ndieta}}</span>
+	</ion-toolbar>
+
+</ion-header>
+
+<ion-content style="--background: transparent;">
+	<ion-list style="background: transparent;">
+		<ion-list-header>
+			Dietas
+		</ion-list-header>
+
+		<ion-item *ngFor="let det of dieta.detalle" style="--background: transparent">
+			<!-- <ion-avatar slot="start"> -->
+			<!-- <img src="./avatar-finn.png"> -->
+			<!-- </ion-avatar> -->
+			<ion-label>
+				<h2>{{det.va_nutri}}</h2>
+				<h3>Porcion:{{det.va_medidas_porc}}</h3>
+				<h3>Cantidad:{{det.va_cant}}</h3>
+				<p *ngIf="det.va_restri!=''"><span style="font-weight: bold">Alimentos Restringidos</span><br>
+					{{det.va_restri}}
+				</p>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+
+</ion-content>
+
+<img src="../../../../assets/images/info_dieta.png" style=" position: absolute;
+		z-index: -1;
+		opacity: 0.2;
+        width: 100%;
+        height: 100%" />

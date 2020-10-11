@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-toolbar style="--background: transparent;">
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Resumen de los analisis solicitados
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: transparent;--padding-top: 20px;">
+	<ion-card>
+		<ion-button fill="outline" style="position: absolute;top: 5px;right: 5px;color:rgb(255, 167, 0);--border-color:rgb(255, 167, 0)">{{solicitud.numero_orden}}</ion-button>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{solicitud.numero_orden}} | Cedula: {{solicitud.cedula}}</ion-card-subtitle>
+			<ion-card-title>{{solicitud.primer_apellido}} {{solicitud.segundo_apellido}} {{solicitud.primer_nombre}}
+				{{solicitud.segundo_nombre}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Prioridad:{{solicitud.prioridad==1?'URGENTE':solicitud.prioridad==2?'RUTINA':'CONTROL'}}<br>
+			Observaciones:{{solicitud.observacion}}<br>
+			Estadi Actual:{{solicitud.nestado}}<br>
+			CIE-10:{{solicitud.cod_4_1}}, {{solicitud.des_cod_1}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item style="position: relative;" *ngFor="let d of solicitud.detalle">
+			<ion-label style="margin-right: 50px;white-space: pre-line;">
+				<span style="font-size: 12px;">{{d.nanalisis}}</span>
+				<br><span style="font-size: 10px;color: blue;">{{d.ngrupo}}</span>
+				<br><span style="font-size: 9px;">{{d.nestado}}</span>
+				<ng-container *ngIf="d.idestado==7">
+					<br><span style="font-size: 12px;">MOTIVO: {{d.motivo_eliminacion}}</span>
+				</ng-container>
+			</ion-label>
+			<ion-button *ngIf="d.idestado==7" fill="outline" style="position: absolute;top: 5px;right: 5px;--border-color:red;color: red;">{{d.codigo}}</ion-button>
+			<ion-button *ngIf="d.idestado!=7" fill="outline" style="position: absolute;top: 5px;right: 5px;">{{d.codigo}}</ion-button>
+		</ion-item>
+	</ion-card>
+	<!-- <ion-card>
+		<ion-item>
+			<ion-label>Atencion y motivo de la emergencia</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{solicitud.motivox}}
+		</ion-card-content>
+	</ion-card> -->
+
+
+</ion-content>

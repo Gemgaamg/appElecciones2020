@@ -1,0 +1,29 @@
+.fecha {
+  font-size: 12px;
+}
+.contenido {
+  font-size: 14px;
+  ion-label {
+    white-space: pre-line;
+  }
+}
+
+ion-card {
+  --background: #ffffffc4;
+}
+
+
+ion-card-content{
+  white-space: break-spaces;
+
+}
+
+ion-content{
+  // background: #2bb741;
+  // --background: radial-gradient(ellipse at center, #fff,#2bb741);
+  --background: radial-gradient(ellipse at center, #fff,#919191);
+}
+
+ion-toolbar{
+  --background: #919191
+}

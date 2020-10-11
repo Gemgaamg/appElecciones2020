@@ -1,0 +1,163 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button #btnAtras text="Atras">
+			</ion-back-button>
+
+		</ion-buttons>
+		<ion-title style="color: black">Parte Diario Enfermeria</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="verHistoriaClinica()">
+				<ion-icon slot="icon-only" name="information-circle"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--background:transparent">
+	<ion-slides [options]="slideOpts" #puntos (ionSlideDidChange)="slideChanged()" style="height: 100%">
+		<ion-slide style="align-items: normal;height: 100%;">
+
+			<ion-content style="--background: transparent;">
+				<div style="height: 100%;    overflow-y: scroll;">
+					<ion-item-divider style="--background: transparent;">
+						<ion-label>
+							Informacion personal
+						</ion-label>
+					</ion-item-divider>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.npaci}}</h2>
+							<p>Paciente</p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.fecha_nacimiento}}</h2>
+							<p>Fecha de nacimiento</p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.edad_paciente}}</h2>
+							<p>Edad</p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.sexo}}</h2>
+							<p>Sexo</p>
+						</ion-label>
+					</ion-item>
+					<ion-item-divider style="--background: transparent;">
+						<ion-label>
+							Informacion del parte diario
+						</ion-label>
+					</ion-item-divider>
+					<ion-item style="--background: #ffffff82;" (click)="abrirAlertCambiarArea()">
+						<ion-label>
+							<h2>{{info_parte.narea}}</h2>
+							<p>Area <span style="color: blue;">(toque para cambiar)</span></p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.fpre}}  | {{info_parte.hora}}</h2>
+							<p>Fecha de ingreso</p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;">
+						<ion-label>
+							<h2>{{info_parte.cie}}</h2>
+							<p>CIE 10 INGRESO</p>
+						</ion-label>
+					</ion-item>
+					<ion-item style="--background: #ffffff82;" (click)="cambiarCama()">
+						<ion-label>
+							<h2>{{info_parte.cama}}</h2>
+							<p>CAMA <span style="color: blue;">(toque para cambiar)</span></p>
+						</ion-label>
+					</ion-item>
+				</div>
+			</ion-content>
+		</ion-slide>
+		<!-- <ion-slide style="padding-top: 20px">
+			2
+		</ion-slide>
+
+
+
+		<ion-slide style="padding-top: 20px;">
+			3
+		</ion-slide> -->
+		<ion-slide style="align-items: normal;height: 100%;">
+			<div style="height: 100%;    overflow-y: scroll;">
+				<ion-card *ngFor="let f of historial_proceso" (click)="abrirOpcionesEvolucion(f)">
+
+					<ion-item class="fecha" fill="outline">
+						<ion-icon slot="start" class="item-verde" *ngIf="f.tipoformx==='FORM010'" name="flask">
+						</ion-icon>
+						<ion-icon slot="start" class="item-azul" *ngIf="f.tipoformx==='RECETA'" name="clipboard">
+						</ion-icon>
+						{{f.fecha_procx}} | {{f.horax}}
+						<ion-button fill="outline" slot="end" [class]="'item '+
+							(f.nestadox==='TERMINADO' || f.nestadox == 'IMPRESO' || f.nestadox == 'ATENDIDO' || f.nestadox=='RESPONDIDO'?' item-verde': 
+							f.nestadox =='BORRADOR' ?'item-gris ':
+							'item-azul-marino ')">{{f.nestadox}}</ion-button>
+					</ion-item>
+					<ion-item class="contenido">
+						<ion-label>
+							{{f.formx}}
+							<p style="font-style: oblique;"><br>{{f.profesionalx}}, {{f.nmedicox}}</p>
+						</ion-label>
+						
+						<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+					</ion-item>
+				</ion-card>
+			</div>
+
+
+
+			<ion-fab horizontal="end" vertical="bottom" ng-disabled="info_parte.cama==undefined||info_parte.cama===''" >
+				<ion-fab-button color="danger">
+					<ion-icon name="add"></ion-icon>
+				</ion-fab-button>
+				<ion-fab-list side="top">
+					<!-- <ion-fab-button color="light" (click)="crearEvolucionForm05Matutina()"
+						data-desc="EVOLUCION MATUTINA">
+						<ion-icon color="danger" name="close-circle"></ion-icon>
+					</ion-fab-button> -->
+					<ion-fab-button color="light" (click)="crearEvolucionForm05()"
+						data-desc="NOTAS DE EVOLUCION">
+						<ion-icon color="success" name="send"></ion-icon>
+					</ion-fab-button>
+				</ion-fab-list>
+			</ion-fab>
+
+
+
+		</ion-slide>
+	</ion-slides>
+
+</ion-content>
+
+<ion-footer>
+	<!-- <ion-tabs> -->
+	<!-- <aqui hay que hacer mediante if la presentacion de la vista, empezar por historial de evoluciones > -->
+	<ion-tab-bar slot="bottom">
+		<ion-tab-button (click)="ir_a('info_parte')">
+			<ion-icon [color]="tab_actual=='info_parte'?'primary':'medium'" name="today"></ion-icon>
+			<ion-label [color]="tab_actual=='info_parte'?'primary':'medium'">Info</ion-label>
+			<ion-badge>6</ion-badge>
+		</ion-tab-button>
+
+
+		<ion-tab-button (click)="ir_a('procesos')">
+			<ion-icon [color]="tab_actual=='procesos'?'primary':'medium'" name="information-circle"></ion-icon>
+			<ion-label [color]="tab_actual=='procesos'?'primary':'medium'">Procesos</ion-label>
+		</ion-tab-button>
+	</ion-tab-bar>
+	<!-- </ion-tabs> -->
+</ion-footer>
+<img src="../../../../assets/images/fondo_pantalla_1.jpg"
+	style="position: absolute;z-index: -1;opacity: 0.4;width: 100%;" />

@@ -1,0 +1,72 @@
+<ion-header>
+  
+  
+	<ion-buttons slot="start">
+		<ion-menu-button></ion-menu-button>
+		<ion-title style="color: white">Resp. Interconsulta</ion-title>
+		
+	</ion-buttons>
+	<ion-searchbar 
+		placeholder="N. Paciente" 
+		[(ngModel)]="inp_paciente" 
+		(keyup)="inp_paciente_change()" 
+		style="text-transform: uppercase" 
+		(ionClear)="limpiarBuscador()" 
+		(keyup.enter)="buscar()"
+		mode=ios>
+	</ion-searchbar>
+</ion-header>
+
+<ion-content style="--background:unset">
+	
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size=12 *ngFor="let inter of interconsultas">
+
+				<!-- <ion-card >
+
+					<ion-card-header >
+						<ion-card-subtitle>{{inter.na_soli}}</ion-card-subtitle>
+						<ion-card-title>{{inter.nombre_paciente}}</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						Fecha:  <br>
+						Medico: {{inter.medico}} <br>
+						<br>
+						{{inter.nestado07}}
+					</ion-card-content>
+
+				</ion-card> -->
+				<ion-item style="--background: #00000075;" (click)="abrirModalConfirmacion(inter)" shape="round">
+					<ion-avatar slot="start">
+						<img src="../../../../assets/images/avatar.svg">
+					</ion-avatar>
+					<ion-label style="color: white;font-style: oblique">
+						<h3 style="color: black;font-weight: bold;font-style: normal">{{inter.nombre_paciente}}</h3>
+						<p style="color: white">{{inter.fh}}</p>
+						<p style="color: white">{{inter.medico}}</p>
+						<p style="color: white;white-space: pre-line;">{{inter.na_soli}}</p>
+						
+						<p style="color: white;">{{inter.nestado07_medico}}</p>
+					</ion-label>
+				</ion-item>
+			
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+  
+	<ion-infinite-scroll (ionInfinite)="cargar10Mas($event)">
+		<ion-infinite-scroll-content
+			loadingSpinner="bubbles"
+			loadingText="Cargando..">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>
+
+<img src="../../../../assets/images/fondo_pantalla.png" 
+style=" position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%"/>

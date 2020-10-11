@@ -1,0 +1,75 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		SELECCIONE UNA DIETA
+	</ion-toolbar>
+
+	<ion-grid *ngIf="dieta_sel.ndieta">
+		<ion-row>
+			<ion-col size=9>
+				<ion-chip color="primary" style="height: 50px">
+					<ion-label>{{dieta_sel.ndieta}}</ion-label>
+				</ion-chip>
+			</ion-col>
+			<ion-col size=3>
+				<ion-buttons>
+
+					<ion-button color="success" (click)="enviar()" style="height: 50px">
+						Sel.
+						<ion-icon name="checkmark-circle"></ion-icon>
+					</ion-button>
+
+				</ion-buttons>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-header>
+<!-- asd -->
+<!-- {{idform07}} -->
+
+
+<ion-content>
+
+	<ion-list>
+
+		<!-- <ion-radio-group [(ngModel)]="dieta_sel"> -->
+		<ion-list-header>
+			<ion-label>Dietas</ion-label>
+		</ion-list-header>
+		<ng-container *ngFor="let d of dietas">
+			<ion-item [color]="dieta_sel==d?'primary':''" (click)="dieta_sel=d">
+				<ion-label >{{d.ndieta}}</ion-label>
+				<ion-badge (click)="verDetalleDieta(d.iddieta)" color="success" slot="end">DETALLE</ion-badge>
+			</ion-item>
+				
+		</ng-container>
+
+
+		<!-- </ion-radio-group> -->
+
+
+		<!-- <ion-radio-group [(ngModel)]="dieta_sel"> -->
+		<!-- <ion-list-header>
+			<ion-label>Dietas <br>(mantener presionado para ver detalles)</ion-label>
+		</ion-list-header>
+		<ng-container *ngFor="let d of dietas">
+			<div style="display: -webkit-box;">
+				<ion-item style="padding: 8px 0px;width: 100%;">
+
+					
+
+				</ion-item>
+			</div>
+
+
+		</ng-container> -->
+
+
+		<!-- </ion-radio-group> -->
+	</ion-list>
+
+</ion-content>

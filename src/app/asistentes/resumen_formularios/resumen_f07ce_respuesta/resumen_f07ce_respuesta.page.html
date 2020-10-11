@@ -1,0 +1,98 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 007 "RESPUESTA DE INTERCONSULTA"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form07.carpetax}} | Cedula: {{form07.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form07.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form07.edadx}} | Sexo:{{form07.sexox}}<br>
+			Especialidad:{{form07.especialidadx}}<br>
+			Medico:{{form07.medicox}}<br>
+			<!-- Estado:{{form07.estadox}}<br> -->
+			Respondido:{{form07.fecha_respondidox}}<br>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.cuadrointerx!==undefined && form07.cuadrointerx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Cuadro clinico de interconsulta</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.cuadrointerx}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form07.resucriteriox!==undefined && form07.resucriteriox.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Resumen del criterio clinico</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.resucriteriox}}
+		</ion-card-content>
+	</ion-card>
+
+	
+	<ion-card *ngIf="form07.detallex!==undefined && form07.detallex.trim()!==''">
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Diagnostico CIE-10</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.detallex}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.plandiagx!==undefined && form07.plandiagx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="pricetag" slot="start"></ion-icon> -->
+			<ion-label>Plan de diagnostico propuesto</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.plandiagx}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.plantratax!==undefined && form07.plantratax.trim()!==''">
+		<ion-item>
+			<ion-label>Plan de tratamiento propuesto</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.plantratax}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.planes!==undefined && form07.planes.trim()!==''">
+		<ion-item>
+
+			<ion-label>Planes terapeuticos y educacionales realizados</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.planes}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

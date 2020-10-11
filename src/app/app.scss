@@ -1,0 +1,293 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+.scroll-y{
+  .alert-input-group, sc-ion-alert-ios{
+    // overflow-y: scroll;
+    overflow-y: auto;
+  }
+  
+}
+.btn-danger{
+  color: red!important;
+}
+.btn-warning{
+  color: orange!important;
+}
+ion-fab-button[data-desc] {
+    position: relative;
+  }
+  
+  ion-fab-button[data-desc]::after {
+    position: absolute;
+    content: attr(data-desc);
+    z-index: 1;
+    right: 55px;
+    bottom: 4px;
+    background-color: var(--ion-color-primary);
+    padding: 9px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  }
+  .swiper-wrapper {
+	width: 100%;
+	height: 100% !important;
+  }
+  // .item-seleccionado{
+  //   font-weight: bold;
+  // }
+  // .item-azul{
+  //   color:blue;
+  // }
+  // .item-azul-claro{
+  //   color:#8f8fff;;
+  // }
+  // .item-azul-marino{
+  //   color:#005580;
+  // }
+  // .item-gris{
+  //   color:#4d4d33;
+  // }
+  // .item-rojo{
+  //   color:red;
+  // }
+  
+  // .item-negro{
+  //   color:black;
+  // }
+  // .item-verde{
+  //   color:#00b300;
+  // }
+  // .item-morado{
+  //   color:#4700b3;
+  // }
+  // .item-morado{
+  //   color:#4700b3;
+  // }
+  
+  .item-seleccionado{
+	font-weight: bold;
+  }
+  // .item-seleccionado:hover{
+  //   color:white;    
+  // }
+  
+  .item-azul{
+	color:blue;
+  }
+  // .item-azul:hover{
+  //   color:white;    
+  // }
+  .item-azul.item-seleccionado{
+	--background:#062c3f;;
+	color:white;    
+  }
+  
+  .item-naranja{
+	color:#ff8000;
+  }
+  // .item-naranja:hover{
+  //   color:white;
+  // }
+  .item-naranja.item-seleccionado{
+	--background:#ff8000;;
+	color:white;    
+  }
+  
+  
+  
+  .item-azul-marino{
+	color:#005580;
+  }
+  // .item-azul-marino:hover{
+  //   color:white;    
+  // }
+  .item-azul-marino.item-seleccionado{
+	--background:#005580;;
+	color:white;    
+  }
+  
+  .item-gris{
+	//color:rgb(77, 77, 51);;
+	color:#4d4d33;
+  }
+  // .item-gris:hover{
+  //   color:white;    
+  // }
+  .item-gris.item-seleccionado, .gris{
+	--background:rgb(59, 59, 45);
+	color:white;    
+  }
+  
+  .item-rojo{
+	color:red;
+  }
+  // .item-rojo:hover{
+  //   color:white;    
+  // }
+  .item-rojo.item-seleccionado, .rojo{
+	--background:rgb(143, 23, 23);
+	color:white;    
+  }
+  .item-negro{
+	color:black;
+  }
+  // .item-negro:hover{
+  //   color:white;    
+  // }
+  .item-negro.item-seleccionado, .negro{
+	--background:black;
+	color:white;    
+  }
+  .item-verde{
+	color:#00b300;
+  }
+  // .item-verde:hover{
+  //   color:white;    
+  // }
+  .item-verde.item-seleccionado,.verde{
+    --background:#154215;
+    color:white;    
+  }
+  .item-morado{
+	  color:#4700b3;
+  }
+  .item-morado.item-seleccionado,.morado{
+    --background:#660066;
+    color:white;    
+  }
+
+
+  .item-rosado{
+    color:rgba(204, 0, 102, 0.76);
+  }
+  .item-rosado.item-seleccionado, .rosado{
+    --background:rgb(204, 0, 102);
+    color:white;    
+  }
+
+  .item-naranja{
+    color:rgba(255, 145, 0, 0.76);
+  }
+  .item-naranja.item-seleccionado, .naranja{
+    --background:rgb(230, 134, 8);
+    color:white;    
+  }
+  
+
+
+  .alert-advertencia{
+    .alert-message,.alert-wrapper{
+      color: orange;
+      button{
+          color: rgb(167, 121, 37);
+      }
+    }
+    .alert-sub-title{
+      color: rgb(68, 45, 4);
+    }
+  }
+  .alert-peligro{
+    .alert-message,.alert-wrapper{
+      color: red;
+      button{
+          color: rgb(170, 48, 48);
+      }
+    }
+    .alert-sub-title{
+      color: rgb(109, 1, 1);
+    }
+    
+  }
+.upper{
+  input{
+    text-transform: uppercase;
+  }
+}
+
+ion-icon {
+  &[name*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+  &[class*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+  &[name*="custom-emergencia"] {
+    mask-image: url(../assets/icon/custom/emergencia.svg);
+  }
+  &[class*="custom-emergencia"] {
+    mask-image: url(../assets/icon/custom/emergencia.svg);
+  }
+  &[name*="custom-glicemia"] {
+    mask-image: url(../assets/icon/custom/glicemia.svg);
+  }
+  &[class*="custom-glicemia"] {
+    mask-image: url(../assets/icon/custom/glicemia.svg);
+  }
+
+  &[name*="custom-cumpleanos"] {
+    mask-image: url(../assets/icon/custom/cumpleaños.svg);
+  }
+  &[class*="custom-cumpleanos"] {
+    mask-image: url(../assets/icon/custom/cumpleaños.svg);
+  }
+
+
+  &[name*="custom-avatar"] {
+    mask-image: url(../assets/icon/custom/avatar.svg);
+  }
+  &[class*="custom-avatar"] {
+    mask-image: url(../assets/icon/custom/avatar.svg);
+  }
+
+  &[name*="custom-mujer"] {
+    mask-image: url(../assets/icon/custom/mujer.ico);
+  }
+  &[class*="custom-mujer"] {
+    mask-image: url(../assets/icon/custom/mujer.ico);
+  }
+
+  &[name*="custom-hombre"] {
+    mask-image: url(../assets/icon/custom/hombre.ico);
+  }
+  &[class*="custom-hombre"] {
+    mask-image: url(../assets/icon/custom/hombre.ico);
+  }
+
+  &[name*="custom-intersexual"] {
+    mask-image: url(../assets/icon/custom/intersexual.svg);
+  }
+  &[class*="custom-intersexual"] {
+    mask-image: url(../assets/icon/custom/intersexual.svg);
+  }
+
+  &[name*="custom-padre"] {
+    mask-image: url(../assets/icon/custom/padre.svg);
+  }
+  &[class*="custom-padre"] {
+    mask-image: url(../assets/icon/custom/padre.svg);
+  }
+  &[name*="custom-madre"] {
+    mask-image: url(../assets/icon/custom/madre.svg);
+  }
+  &[class*="custom-madre"] {
+    mask-image: url(../assets/icon/custom/madre.svg);
+  }
+  
+}
+
+

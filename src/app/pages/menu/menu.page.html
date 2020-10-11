@@ -1,0 +1,102 @@
+<ion-menu contentId="content" persistent="true"  type="overlay">
+ 
+ 
+ 
+  <ion-content>
+    <div style="height:100%;">
+      <!-- <ion-thumbnail item-start style="width:100%;height: 160px;">
+        <div class=header-menu> -->
+          
+          <!-- <div class=logo >
+            <ion-avatar slot="start">
+              <img src="../../../../assets/images/avatar.svg">
+            </ion-avatar>
+          </div>
+          <div style="font-family: cursive;
+          font-weight: bold;
+          color: rgb(0, 0, 0);
+          padding-left: 10px;text-transform:capitalize; ">{{usuario.nombre}}</div>
+          <div style="font-family: cursive;
+          font-weight: bold;
+          color: rgb(0, 0, 0);
+          padding-left: 10px;
+          padding-bottom: 10px;">{{usuario.mail}}</div> -->
+        <!-- </div>
+      </ion-thumbnail> -->
+      <div style="height: 100%">
+        <div style="height: 80%">
+          <ion-item class="info-usuario" shape="round">
+            <ion-avatar slot="start">
+              <img src="../../../../assets/images/avatar.svg">
+            </ion-avatar>
+            <ion-label>
+              <h3 class="nombre">
+                {{usuario.nombre}}
+              </h3>
+              <p>{{usuario.mail}}</p>
+            </ion-label>
+          </ion-item>
+          <div *ngFor="let p of pages">
+
+                <!-- Standard Menu Item -->
+            <ion-menu-toggle *ngIf="p.url">
+              <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+                <ion-icon [name]="p.icon" slot="start"></ion-icon>
+                <ion-label >
+                  {{ p.title }}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+            <!-- Item with Children -->
+      
+            <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.parent-active]="p.open" detail="false">
+              <ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+      
+            <!-- Children List for clicked Item -->
+            <ion-list *ngIf="p.open">
+              <ion-menu-toggle>
+                <ion-item *ngFor="let sub of p.children" class="sub-item" [routerLink]="sub.url" routerDirection="root"
+                  routerLinkActive="active">
+                  <ion-icon *ngIf="sub.icon.indexOf('custom')!=-1" [class]="'custom-'+sub.icon" ></ion-icon>
+                  <ion-icon *ngIf="sub.icon.indexOf('custom')==-1" [name]="sub.icon" ></ion-icon>
+                  <!-- <ion-icon name="custom-emergencia" slot="start"></ion-icon> -->
+                  <ion-label style="text-transform: capitalize">
+                    {{ sub.title.toLowerCase() }}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-list>
+      
+          </div>
+        </div>
+        <div style="height: 20%">
+            <ion-item button (click)="logOut()" style="position: absolute;bottom: 0px">
+              <ion-icon name="log-out"></ion-icon>
+              <!-- <ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon> -->
+              <ion-label>Salir del Sistema</ion-label>
+            </ion-item>
+        </div>
+        
+      </div>
+      
+      
+    </div>
+  </ion-content>
+ 
+</ion-menu>
+ 
+<ion-router-outlet id="content" main></ion-router-outlet>
+
+<!-- 
+<ion-header>
+  <ion-toolbar>
+    <ion-title>main</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->

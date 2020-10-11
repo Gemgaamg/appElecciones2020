@@ -1,0 +1,158 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="end">
+			<ion-button color=danger (click)="cerrar()">
+				<ion-icon slot="icon-only" name="close-circle"></ion-icon>
+
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons slot="start">
+			<ion-button *ngIf="punto==0" color=secondary (click)="verAnalisisSeleccionados()">
+				<ion-icon name="cart"></ion-icon>
+				<ion-badge style="
+							    right: 2px;
+								position: absolute;
+								top: 2px;
+								background: black;
+								padding: 0px;">6</ion-badge>
+			</ion-button>
+			<ion-button *ngIf="punto==1" color=secondary (click)="verListaAnalisisDisponibles()">
+				<ion-icon name="list-box"></ion-icon>
+				<ion-badge style="
+									right: 2px;
+									position: absolute;
+									top: 2px;
+									background: black;
+									padding: 0px;">6</ion-badge>
+			</ion-button>
+		</ion-buttons>
+		Solicitud de laboratorio
+	</ion-toolbar>
+
+</ion-header>
+<ion-content style="--background: transparent;">
+	<ion-slides #puntos [options]="slideOpts" style="height: 100%">
+		<ion-slide>
+			<ion-content>
+
+				<ion-list>
+					<ion-list-header>
+						<ion-label>EXAMENES</ion-label>
+					</ion-list-header>
+					<ng-container *ngFor="let analisis of filtros.arrAnalisis">
+
+						<ion-item (click)="addDetalle(analisis)" [class]="'item '+
+										(esta_seleccionado(analisis.idanalisis) ? 'item-seleccionado ':'')+
+										(
+											analisis.agotado===0?'item-rojo ':
+											analisis.idestado===2?'item-rojo ':
+											analisis.idestado===3?'item-verde ':
+											analisis.idestado===4?'item-negro ':
+											'item-azul' )" style="font-size: 10px">
+
+							<ion-label>[{{analisis.codigo}}] {{analisis.nanalisis}}</ion-label>
+							<!-- <ion-radio slot="start" [value]="c"></ion-radio> -->
+						</ion-item>
+					</ng-container>
+				</ion-list>
+
+			</ion-content>
+
+		</ion-slide>
+		<ion-slide style="align-items: normal;">
+			<ion-list style="background: transparent;width: 100%;overflow-y: scroll;height: -webkit-fill-available;">
+				<ion-list-header>
+					ANALISIS SELECCIONADOS
+				</ion-list-header>
+				<ion-item style="--background: #a9ff94a3;" *ngFor="let detalle of solicitud.detalle">
+					<ion-label>
+						[{{detalle.codigo}}]{{detalle.nanalisis.substring(0, 20)}}
+					</ion-label>
+					<!-- <ion-note slot="end" color="primary">99</ion-note> -->
+					<ion-icon (click)="eliminarDetalle(detalle)" name="close-circle"></ion-icon>
+				</ion-item>
+
+				<ion-list-header>
+					IMPRESION DIAGNOSTICA
+				</ion-list-header>
+				<div style="overflow: hidden;">
+					<ion-chip outline color="danger" style="float: right;border: 2px solid;" (click)="quitarCIE10()">
+						<ion-label>Quitar Cie10</ion-label>
+					</ion-chip>
+					<ion-chip outline color="success" style="float: right;border: 2px solid;"
+						(click)="seleccionarCIE10()">
+						<ion-label>Agregar Cie10</ion-label>
+					</ion-chip>
+
+				</div>
+				<ion-item style="--background: transparent" *ngIf="solicitud.cod_4_1">
+
+					<ion-label>
+						{{solicitud.cod_4_1}} | {{solicitud.des_cod_1}}
+					</ion-label>
+				</ion-item>
+				<ion-item style="--background: transparent" *ngIf="solicitud.cod_4_2">
+
+					<ion-label>
+						{{solicitud.cod_4_2}} | {{solicitud.des_cod_2}}
+					</ion-label>
+				</ion-item>
+				<ion-item style="--background: transparent" *ngIf="solicitud.cod_4_3">
+
+					<ion-label>
+						{{solicitud.cod_4_3}} | {{solicitud.des_cod_3}}
+					</ion-label>
+				</ion-item>
+
+				<ion-list-header>
+					OBSERVACION
+				</ion-list-header>
+				<p>
+					{{solicitud.observacion}}
+				</p>
+			</ion-list>
+			<ion-fab vertical="bottom" horizontal="end">
+				<ion-fab-button>
+					<ion-icon name="add"></ion-icon>
+				</ion-fab-button>
+				<ion-fab-list side="top">
+					<ion-fab-button color="light" (click)="cerrar()" data-desc="Cerrar">
+						<ion-icon color="danger" name="close-circle"></ion-icon>
+					</ion-fab-button>
+					<ion-fab-button color="light" (click)="confirmarSolicitud()" data-desc="Confirmar Solicitud">
+						<ion-icon color="success" name="send"></ion-icon>
+					</ion-fab-button>
+
+
+					<ion-fab-button color="light" (click)="agregarObservacion()" data-desc="Agregar Observacion">
+						<ion-icon color="success" name="eye"></ion-icon>
+					</ion-fab-button>
+				</ion-fab-list>
+			</ion-fab>
+
+
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+<ion-footer>
+
+	<div style="display: block">
+		<ion-searchbar placeholder="Cod" [(ngModel)]="filtros.codigo"
+			style="text-transform: uppercase;width: 40%;float: left" (ionClear)="limpiarBuscador()" mode="ios"
+			(keyup.enter)="buscarAnalisis(true)">
+		</ion-searchbar>
+		<ion-searchbar placeholder="Analisis" [(ngModel)]="filtros.nanalisis"
+			style="text-transform: uppercase;width: 60%" (ionClear)="limpiarBuscador()" mode="ios"
+			(keyup.enter)="buscarAnalisis(true)">
+		</ion-searchbar>
+	</div>
+
+
+
+</ion-footer>
+<img src="../../../../assets/images/laboratorio.jpg" style=" position: absolute;
+		z-index: -1;
+		opacity: 0.2;
+        width: 100%;
+        height: 100%" />

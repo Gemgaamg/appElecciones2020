@@ -1,0 +1,92 @@
+<ion-header>
+	<ion-toolbar style="--background: transparent;">
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Examen de laboratorio
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: transparent;--padding-top: 20px;">
+	<ion-card>
+		<ion-card-header>
+			<!-- <ion-card-subtitle>Carpeta: {{solicitud.numero_orden}} | Cedula: {{solicitud.cedula}}</ion-card-subtitle> -->
+			<ion-card-title>{{paciente}}</ion-card-title>
+		</ion-card-header>
+
+	</ion-card>
+	<ion-card>
+		<ng-container *ngFor="let d of det">
+			<ng-container *ngIf="d.numx == 5">
+				<ng-container *ngIf="d.resultadox=='' && d.observacionx!=''">
+					<ion-item style="position: relative;">
+						<ion-label class="resultado-2">
+							<span class="bold">{{d.parametrox}} {{d.verificado_resultadox}}</span><br>
+							Unidad: {{d.unidadx}}<br>
+							<ng-container *ngIf="(d.observacionx!=undefined && d.observacionx.trim() !='')">
+								{{d.observacionx}}<br>
+							</ng-container>
+						</ion-label>
+					</ion-item>
+				</ng-container>
+				<ng-container *ngIf="!(d.resultadox=='' && d.observacionx!='')">
+					<ion-item style="position: relative;">
+						<ion-label class="resultado-1">
+							<span class="bold">{{d.parametrox}}</span><br>
+							Resultado: <span class="bold">{{d.verificado_resultadox}}{{d.resultadox}}</span> <br>
+							Unidad: <span class="bold">{{d.unidadx}}</span><br>
+							<ng-container *ngIf="(d.referenciax!=undefined && d.referenciax.trim() !='')">
+								Referencia: <span class="bold">{{d.referenciax}}</span><br>
+							</ng-container>
+							<ng-container *ngIf="(d.observacionx!=undefined && d.observacionx.trim() !='')">
+								<div class="observacion">{{d.observacionx}}</div><br>
+							</ng-container>
+						</ion-label>
+					</ion-item>
+				</ng-container>
+			</ng-container>
+			<ng-container *ngIf="d.numx == 2">
+				<ion-card-header>
+					<ion-card-subtitle class="titulo-2">{{d.parametrox}}</ion-card-subtitle>
+				</ion-card-header>
+
+			</ng-container>
+			<ng-container *ngIf="d.numx == 3">
+				<ion-item style="position: relative;">
+					<ion-label class="titulo-3">
+						{{d.parametrox}}
+					</ion-label>
+				</ion-item>
+			</ng-container>
+			<ng-container *ngIf="d.numx == 1">
+				<ion-card-header class="titulo-1">
+					<!-- <ion-card-subtitle>Carpeta: {{solicitud.numero_orden}} | Cedula: {{solicitud.cedula}}</ion-card-subtitle> -->
+					<ion-card-title>{{d.parametrox}}</ion-card-title>
+				</ion-card-header>
+
+			</ng-container>
+			<ng-container *ngIf="d.numx == 6">
+				<span class="nota-adicional">6: {{d.parametrox}} - {{d.verificado_resultadox}} -
+					{{d.observacionx}}
+				</span>
+			</ng-container>
+
+
+		</ng-container>
+
+	</ion-card>
+	<!-- <ion-card>
+		<ion-item>
+			<ion-label>Atencion y motivo de la emergencia</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{solicitud.motivox}}
+		</ion-card-content>
+	</ion-card> -->
+
+
+</ion-content>

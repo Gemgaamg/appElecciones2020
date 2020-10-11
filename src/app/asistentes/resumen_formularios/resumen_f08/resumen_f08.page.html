@@ -1,0 +1,149 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 008 "Atencion diaria en emergencia"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form08.carpetax}} | Cedula: {{form08.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form08.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form08.edadx}} | Sexo:{{form08.sexox}}<br>
+			Medico:{{form08.medicox}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Atencion y motivo de la emergencia</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.motivox}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.accidentex!==undefined && form08.accidentex.trim()!==''">
+	<ion-item>
+		<!-- <ion-icon name="heart"></ion-icon> -->
+		<ion-label>Accidente, violencia, intoxicacion, envenenamiento o quemadura</ion-label>
+		<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+	</ion-item>
+
+	<ion-card-content>
+		{{form08.accidentex}}
+	</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.antecedentesx!==undefined && form08.antecedentesx.trim()!==''">
+	<ion-item>
+		<!-- <ion-icon name="heart"></ion-icon> -->
+		<ion-label>Antecedentes personales y familiares</ion-label>
+		<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+	</ion-item>
+
+	<ion-card-content>
+		{{form08.antecedentesx}}
+	</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Cuadro clinico inicial</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.cuadrox}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<ion-icon name="heart" slot="start"></ion-icon>
+			<ion-label>Signos vitales</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.sig_vitax}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.exa_fisicox!==undefined && form08.exa_fisicox.trim()!==''">
+	<ion-item>
+		<!-- <ion-icon name="heart"></ion-icon> -->
+		<ion-label>Examen fisico y diagnostico</ion-label>
+		<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+	</ion-item>
+
+	<ion-card-content>
+		{{form08.exa_fisicox}}
+	</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.emer_obstx!==undefined && form08.emer_obstx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Emergencias Obstetricas</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.emer_obstx}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.soli_examx!==undefined && form08.soli_examx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Solicitudes de examenes</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.soli_examx}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Cie10</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.ciex}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form08.ciexalta!==undefined && form08.ciexalta.trim()!==''">
+		<ion-item>
+			<ion-icon name="flask" slot="start"></ion-icon>
+			<ion-label>Solicitudes de examenes</ion-label>
+
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.ciexalta}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form08.planx!==undefined && form08.planx.trim()!==''">
+		<ion-item>
+			<ion-label>Plan de tratamiento</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{form08.planx}}
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>

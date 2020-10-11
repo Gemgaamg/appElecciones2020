@@ -1,0 +1,25 @@
+<ion-content fullscreen>
+	<ion-item class="close-fake" lines="none" text="center">
+		<ion-button (click)="close()" fill="clear" color="light">
+			<ion-icon name="close" slot="start"></ion-icon>
+			Atras
+		</ion-button>
+		<ion-button (click)="zoom(true)" fill="clear" color="light">
+			<ion-icon name="add" slot="start"></ion-icon>
+			acercar
+		</ion-button>
+		<ion-button (click)="zoom(false)" fill="clear" color="light">
+			<ion-icon name="remove" slot="start"></ion-icon>
+			alejar
+		</ion-button>
+	</ion-item>
+
+	<ion-slides [options]="sliderOpts" #slider>
+		<ion-slide>
+			<div class="swiper-zoom-container">
+				<img src="{{src}}">
+				<!-- <iframe src="https://drive.google.com/file/d/1jRIcPwANPXNKWqSDNjjPlXY8hO_2__ni/preview" width="640" height="480"></iframe> -->
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>

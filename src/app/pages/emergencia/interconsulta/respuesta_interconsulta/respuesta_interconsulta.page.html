@@ -1,0 +1,212 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button #btnAtras text="Atras">
+			</ion-back-button>
+
+		</ion-buttons>
+		<ion-title style="color: black">Resp. Interconsulta</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="abrirModalSolicitudInfo()">
+				<ion-icon slot="icon-only" name="information-circle"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-slides [options]="slideOpts" #puntos (ionSlideDidChange)="slideChanged()">
+		<ion-slide style="display: block;padding-top: 20px">
+
+			<ion-item>
+				<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">CUADRO CLINICO DE
+					INTERCONSULTA </ion-label>
+				<ion-textarea autosize [(ngModel)]="form07.cuadrointer"
+					(ngModelChange)="form07.cuadrointer = $event.toUpperCase()">
+
+				</ion-textarea>
+			</ion-item>
+
+
+		</ion-slide>
+		<ion-slide style="display: block;padding-top: 20px">
+			<ion-item>
+				<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">
+					RESUMEN DEL CRITERIO CLINICO
+				</ion-label>
+				<ion-textarea autosize [(ngModel)]="form07.resucriterio"
+					(ngModelChange)="form07.resucriterio = $event.toUpperCase()">
+
+				</ion-textarea>
+			</ion-item>
+		</ion-slide>
+
+		<ion-slide style="display: block;padding-top: 20px">
+			<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">DIAGNOSTICO
+			</ion-label>
+			<ion-grid>
+				<ion-row>
+					<ion-col size="2" *ngIf="form07.cod_4_respuesta">
+						<ion-chip color="primary" (click)="abrirModalCie10('cod_4_respuesta')">
+							<ion-label>{{form07.cod_4_respuesta}}</ion-label>
+						</ion-chip>
+					</ion-col>
+					<ion-col size="8" *ngIf="form07.cod_4_respuesta">
+						<ion-select interface="popover" [(ngModel)]="form07.tcie1_respuesta">
+							<ion-select-option [value]=0>Tipo Cie10</ion-select-option>
+							<ion-select-option [value]=1>1| - PRESUNTIVO</ion-select-option>
+							<ion-select-option [value]=2>2| - DEF. INICIAL</ion-select-option>
+							<ion-select-option [value]=3>3| - DEF. CONFIRMADO POR LAB.
+							</ion-select-option>
+							<ion-select-option [value]=4>4| - DEF. CONTROL</ion-select-option>
+						</ion-select>
+
+					</ion-col>
+
+					<ion-col size="2" *ngIf="form07.cod_4_respuesta && !form07.cod_4_2_respuesta">
+						<ion-icon (click)="quitarCie10(1)" class=btn-borrar color="danger" name="close">
+						</ion-icon>
+					</ion-col>
+					<ion-col size=12 *ngIf="!form07.cod_4_respuesta">
+						<ion-button (click)="abrirModalCie10('cod_4_respuesta')">
+							Seleccionar CIE10
+						</ion-button>
+					</ion-col>
+
+				</ion-row>
+				<ion-row>
+					<ion-col size=2 *ngIf="form07.cod_4_2_respuesta">
+						<ion-chip color="primary" (click)="abrirModalCie10('cod_4_2_respuesta')">
+							<ion-label>{{form07.cod_4_2_respuesta}}</ion-label>
+						</ion-chip>
+					</ion-col>
+					<ion-col size=8 *ngIf="form07.cod_4_2_respuesta">
+						<ion-select interface="popover" [(ngModel)]="form07.tcie2_respuesta">
+							<ion-select-option [value]=0>Tipo Cie10</ion-select-option>
+							<ion-select-option [value]=1>1| - PRESUNTIVO</ion-select-option>
+							<ion-select-option [value]=2>2| - DEF. INICIAL</ion-select-option>
+							<ion-select-option [value]=3>3| - DEF. CONFIRMADO POR LAB.</ion-select-option>
+							<ion-select-option [value]=4>4| - DEF. CONTROL</ion-select-option>
+						</ion-select>
+					</ion-col>
+					<ion-col size="2" *ngIf="form07.cod_4_2_respuesta && !form07.cod_4_3_respuesta">
+						<ion-icon (click)="quitarCie10(2)" class=btn-borrar color="danger" name="close">
+						</ion-icon>
+					</ion-col>
+					<ion-col size=12
+						*ngIf="!form07.cod_4_2_respuesta && form07.cod_4_respuesta && form07.tcie1_respuesta!='0'">
+						<ion-button (click)="abrirModalCie10('cod_4_2_respuesta')">
+							AGREGAR OTRO CIE10
+						</ion-button>
+					</ion-col>
+
+				</ion-row>
+				<ion-row>
+					<ion-col size=2 *ngIf="form07.cod_4_3_respuesta">
+						<ion-chip color="primary" (click)="abrirModalCie10('cod_4_3_respuesta')">
+							<ion-label>{{form07.cod_4_3_respuesta}}</ion-label>
+						</ion-chip>
+					</ion-col>
+					<ion-col size=8 *ngIf="form07.cod_4_3_respuesta">
+						<ion-select interface="popover" [(ngModel)]="form07.tcie3_respuesta">
+							<ion-select-option [value]=0>Tipo Cie10</ion-select-option>
+							<ion-select-option [value]=1>1| - PRESUNTIVO</ion-select-option>
+							<ion-select-option [value]=2>2| - DEF. INICIAL</ion-select-option>
+							<ion-select-option [value]=3>3| - DEF. CONFIRMADO POR LAB.
+							</ion-select-option>
+							<ion-select-option [value]=4>4| - DEF. CONTROL</ion-select-option>
+						</ion-select>
+					</ion-col>
+					<ion-col size="2" *ngIf="form07.cod_4_3_respuesta && !form07.cod_4_4_respuesta">
+						<ion-icon (click)="quitarCie10(3)" class=btn-borrar color="danger" name="close">
+						</ion-icon>
+					</ion-col>
+					<ion-col size=12
+						*ngIf="!form07.cod_4_3_respuesta && form07.cod_4_2_respuesta && form07.tcie2_respuesta!='0'">
+						<ion-button (click)="abrirModalCie10('cod_4_3_respuesta')">
+							AGREGAR OTRO CIE10
+						</ion-button>
+					</ion-col>
+
+				</ion-row>
+				<ion-row>
+					<ion-col size=2 *ngIf="form07.cod_4_4_respuesta">
+						<ion-chip color="primary" (click)="abrirModalCie10('cod_4_4_respuesta')">
+							<ion-label>{{form07.cod_4_4_respuesta}}</ion-label>
+						</ion-chip>
+					</ion-col>
+					<ion-col size=8 *ngIf="form07.cod_4_4_respuesta">
+						<ion-select interface="popover" [(ngModel)]="form07.tcie4_respuesta">
+							<ion-select-option [value]=0>Tipo Cie10</ion-select-option>
+							<ion-select-option [value]=1>1| - PRESUNTIVO</ion-select-option>
+							<ion-select-option [value]=2>2| - DEF. INICIAL</ion-select-option>
+							<ion-select-option [value]=3>3| - DEF. CONFIRMADO POR LAB.
+							</ion-select-option>
+							<ion-select-option [value]=4>4| - DEF. CONTROL</ion-select-option>
+						</ion-select>
+					</ion-col>
+					<ion-col size="2" *ngIf="form07.cod_4_4_respuesta">
+						<ion-icon (click)="quitarCie10(4)" class=btn-borrar color="danger" name="close">
+						</ion-icon>
+					</ion-col>
+					<ion-col size=12
+						*ngIf="!form07.cod_4_4_respuesta && form07.cod_4_3_respuesta && form07.tcie3_respuesta!='0'">
+						<ion-button (click)="abrirModalCie10('cod_4_4_respuesta')">
+							AGREGAR OTRO CIE10
+						</ion-button>
+					</ion-col>
+
+				</ion-row>
+
+			</ion-grid>
+
+
+
+		</ion-slide>
+
+		<ion-slide style="display: block;padding-top: 20px">
+			<ion-item>
+				<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">
+					PLAN DE DIAGNOSTICO PROPUESTO</ion-label>
+				<ion-textarea autosize [(ngModel)]="form07.plandiag"
+					(ngModelChange)="form07.plandiag = $event.toUpperCase()">
+
+				</ion-textarea>
+			</ion-item>
+		</ion-slide>
+		<ion-slide style="display: block;padding-top: 20px">
+			<ion-item>
+				<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">
+					PLAN DE TRATAMIENTO PROPUESTO</ion-label>
+				<ion-textarea autosize [(ngModel)]="form07.plantrata"
+					(ngModelChange)="form07.plantrata = $event.toUpperCase()">
+
+				</ion-textarea>
+			</ion-item>
+		</ion-slide>
+	</ion-slides>
+
+</ion-content>
+<ion-footer no-border>
+	<ion-grid fixed>
+		<ion-row>
+			<ion-col size="5" offset=1>
+				<ion-button expand=full [disabled]="!btnAnteriorActivo()" color="secondary" shape="round" mode=ios
+					style="height: 60px;" (click)="anterior()">
+					Anterior
+				</ion-button>
+
+			</ion-col>
+			<ion-col size="5">
+
+				<ion-button expand=full *ngIf="orden_puntos[this.punto] != 10" [disabled]="!btnSiguienteActivo() || deslizando==true"
+					color="primary" shape="round" mode=ios style="height: 60px;" (click)="siguiente()">
+					Siguiente
+				</ion-button>
+				<ion-button expand=full *ngIf="orden_puntos[this.punto] == 10" [disabled]="!btnSiguienteActivo() || deslizando==true"
+					color="primary" shape="round" mode=ios style="height: 60px;" (click)="siguiente()">
+					Terminar
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

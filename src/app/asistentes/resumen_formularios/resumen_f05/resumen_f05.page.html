@@ -1,0 +1,53 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 005 "Evolucion digital"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form05.carpetax}} | Cedula: {{form05.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form05.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form05.edadx}} | Sexo:{{form05.sexox}}<br>
+			Profesional:{{form05.medicox}}<br>
+			Fecha: {{form05.fechax}} | Hora: {{form05.horax}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form05.notasx!==undefined && form05.notasx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Notas de evolucion</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form05.notasx}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form05.planesx!==undefined && form05.planesx.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Planes de tratamiento</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form05.planesx}}
+		</ion-card-content>
+	</ion-card>
+	
+</ion-content>

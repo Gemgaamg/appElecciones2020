@@ -1,0 +1,74 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		PARTE DIARIO DE ATENCION
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{parte_diario.carpetax}} | Cedula: {{parte_diario.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{parte_diario.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{parte_diario.edadx}} | Sexo:{{parte_diario.sexox}}<br>
+			Medico:{{parte_diario.medicox}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-item>
+			<ion-icon name="heart" slot="start"></ion-icon>
+			<ion-label>Signos vitales</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{parte_diario.sig_vitax}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Cuadro clinino inicial</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{parte_diario.cuadrox}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Cie10</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{parte_diario.ciex}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="parte_diario.planx!==undefined && parte_diario.planx.trim() !==''">
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Plan de tratamiento</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{parte_diario.planx}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

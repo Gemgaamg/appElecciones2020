@@ -1,0 +1,74 @@
+<ion-header>
+
+	<ion-toolbar style="--background: transparent;">
+		<ion-buttons slot="start">
+
+			<ion-menu-button style='color:white'></ion-menu-button>
+
+		</ion-buttons>
+
+		<ion-title style="color: white">Partes diarias</ion-title>
+
+		<ion-buttons slot="primary">
+			<ion-button (click)="abrirFiltroAreas()">
+				<ion-icon *ngIf='filtros.categoria!="todos"' style='color:blue' name="options"></ion-icon>
+				<ion-icon *ngIf='filtros.categoria=="todos"' style='color:white' name="options"></ion-icon>
+
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-searchbar placeholder="N. Paciente" [attr.value]="srcFiltrosPaciente()" (click)="abrirFiltros()"
+		style="text-transform: uppercase" (ionClear)="limpiarBuscador()" (keyup.enter)="buscar()" mode=ios>
+	</ion-searchbar>
+	<span 
+		style="
+			padding: 10px;
+			font-weight: bold;
+			color: white;
+			font-style: italic;">
+			{{filtros.texto}}
+	</span>
+</ion-header>
+
+<ion-content style="--background:unset">
+
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size=12 *ngFor="let pac of pacientes_emergencia">
+				<ion-item style="--background: #00000075;" (click)="abrirModalConfirmacion(pac)" shape="round">
+					<ion-avatar slot="start">
+						<img src="../../../../assets/images/avatar.svg">
+					</ion-avatar>
+					<ion-label class="info-paciente">
+						<h3 class="nombre">
+							{{pac.primer_apellido}}
+							{{pac.segundo_apellido}}
+							{{pac.primer_nombre}}
+							{{pac.segundo_nombre}}
+						</h3>
+						<p>F. NACIMIENTO: {{pac.fecha_nacimiento}} {{pac.anos}}</p>
+						<p>ARCHIVO: {{pac.numero_archivo}}</p>
+						<p>CI:{{pac.cedula}}</p>
+						<p style="white-space: pre-line;">HORA: {{pac.hora}}</p>
+					</ion-label>
+				</ion-item>
+
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+	<ion-infinite-scroll (ionInfinite)="cargar10Mas($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando..">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>
+
+<div style=" position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+		
+		background: radial-gradient(ellipse at center, rgb(186, 255, 245) 0%, rgb(104, 161, 174) 100%);
+"></div>

@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		CASOS DE ESTUDIOS REALIZADOS EN EL HOSPITAL
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	
+
+	<ion-card *ngFor="let h of historial" (click)="abrirAtencion(h)">
+		<ion-card-header>
+		<ion-card-subtitle>{{h.departax}} | {{h.fprex}} | {{h.horax}}</ion-card-subtitle>
+		<ion-card-title>{{h.nareax}}</ion-card-title>
+		
+		</ion-card-header>
+		<ion-card-content>
+			{{h.cuadrox}}
+		</ion-card-content>
+	</ion-card>
+
+  
+</ion-content>

@@ -1,0 +1,128 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="end">
+			<ion-button color=danger (click)="cerrar()">
+				<ion-icon slot="icon-only" name="close-circle"></ion-icon>
+
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons slot="start">
+			<ion-button *ngIf="punto==0" color=secondary (click)="verAnalisisSeleccionados()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+				<ion-badge style="
+							    right: 2px;
+								position: absolute;
+								top: 2px;
+								background: black;
+								padding: 0px;">6</ion-badge>
+			</ion-button>
+			<!-- <ion-button *ngIf="punto==1" color=secondary (click)="verListaMedicamentosDisponibles()">
+				<ion-icon name="list-box"></ion-icon>
+				<ion-badge style="
+									right: 2px;
+									position: absolute;
+									top: 2px;
+									background: black;
+									padding: 0px;">6</ion-badge>
+			</ion-button> -->
+		</ion-buttons>
+		Receta Electronica
+	</ion-toolbar>
+
+	
+
+</ion-header>
+<ion-content style="--background: transparent;">
+	<ion-slides #puntos [options]="slideOpts" style="height: 100%">
+		<ion-slide>
+			<ion-content>
+
+				<ion-list style="height: 50%;overflow-y: scroll;">
+					<ion-list-header>
+						<ion-label>EN CUADRO BASICO</ion-label>
+					</ion-list-header>
+					<ng-container *ngFor="let m of filtros.arrMedicamentoCB">
+
+						<ion-item (click)="addDetalleCB(m)" [class]="'item '+
+										(
+											m.estado===0?'item-negro ':
+											'item-azul' )" style="font-size: 10px">
+
+							<ion-label>[{{m.stock}}] {{m.nprod}}</ion-label>
+						</ion-item>
+					</ng-container>
+				</ion-list>
+
+				<ion-list style="height: 50%;overflow-y: scroll;">
+					<ion-list-header>
+						<ion-label>FUERA DEL CUADRO BASICO</ion-label>
+					</ion-list-header>
+					<ng-container *ngFor="let m of filtros.arrMedicamentoNoCB">
+
+						<ion-item (click)="addDetalleNoCB(m)" [class]="'item '+
+										(
+											m.estado===0?'item-negro ':
+											'item-rosado' )" style="font-size: 10px">
+
+							<ion-label>{{m.prodncb}}</ion-label>
+						</ion-item>
+					</ng-container>
+				</ion-list>
+			</ion-content>
+
+		</ion-slide>
+		<ion-slide style="align-items: normal;">
+			<ion-list style="background: transparent;width: 100%;overflow-y: scroll;height: -webkit-fill-available;">
+				<ion-list-header>
+					EN CUADRO BASICO
+				</ion-list-header>
+				<ion-item style="--background: #a9ff94a3;" *ngFor="let d of receta.detalleCuadroBasico">
+					<ion-label text-wrap>
+						<span style="color: blue;">[{{d.cantidad}}]</span> {{d.nprod}} | {{d.nviaad}} | {{d.uso}}
+					</ion-label>
+					<!-- <ion-note slot="end" color="primary">99</ion-note> -->
+					<ion-icon (click)="quitarMedicamentoCBReceta(d.iddetalle)" name="close-circle"></ion-icon>
+				</ion-item>
+
+				<ion-list-header>
+					FUERA DEL CUADRO BASICO
+				</ion-list-header>
+				<ion-item style="--background: rgb(204, 0, 102);" *ngFor="let d of receta.detalleNoCuadroBasico">
+					<ion-label text-wrap>
+						<span style="color: blue;">[{{d.cantidad}}]</span> {{d.prodncb}} | {{d.uso}}
+					</ion-label>
+					<ion-icon (click)="quitarMedicamentoNoCBReceta(d.iddetalle)" name="close-circle"></ion-icon>
+				</ion-item>
+				<ion-list-header >
+					<ion-item style="--background: unset;">
+						<ion-icon (click)="agregarNotaAdicional()" name="create" slot="end"></ion-icon>
+						<ion-label>NOTAS ADICIONALES</ion-label>
+					  </ion-item>
+				</ion-list-header>
+				<p>
+					{{receta.observacion}}
+				</p>
+			</ion-list>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+<ion-footer>
+
+	<div style="display: block">
+		<!--(ionClear)="limpiarBuscador()"-->
+		<ion-searchbar placeholder="Medicamento" [(ngModel)]="filtros.nmedicamento"
+			style="text-transform: uppercase;width: 100%"  mode="ios"
+			(keyup.enter)="buscarMedicamento()"
+			>
+		</ion-searchbar>
+	</div>
+
+
+
+</ion-footer>
+<img src="../../../../assets/images/laboratorio.jpg" style=" position: absolute;
+		z-index: -1;
+		opacity: 0.2;
+        width: 100%;
+        height: 100%" />

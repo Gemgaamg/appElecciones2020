@@ -1,0 +1,114 @@
+<ion-content>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          Single Selection
+        </ion-label>
+      </ion-list-header>
+    
+      <ion-item>
+        <ion-label>Canton</ion-label>
+        <ion-select  [(ngModel)]="cantonSeleccionado" (ionChange)="seleccionarCanton();" placeholder="Seleccione uno" okText="Aceptar" cancelText="Canelar">
+          <ion-select-option *ngFor="let c of cantonLista" [value]="c">{{c.n_canton}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="cantonRefreshed">
+          <ion-label>Parroquia</ion-label>
+          <ion-select  [(ngModel)]="parroquiaSeleccionado" (ionChange)="seleccionarParroquia();" placeholder="Seleccione uno" okText="Aceptar" cancelText="Canelar">
+              <ion-select-option *ngFor="let p of parroquiaLista" [value]="p">{{p.n_parroquia}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item *ngIf="parroquiaRefreshed">
+          <ion-label>Recinto</ion-label>
+          <ion-select  [(ngModel)]="recintoSeleccionado" (ionChange)="seleccionarRecinto();" placeholder="Seleccione uno" okText="Aceptar" cancelText="Canelar">
+              <ion-select-option *ngFor="let r of recintoLista" [value]="r">{{r.n_recinto}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item *ngIf="recintoRefreshed">
+          <ion-label>Mesa</ion-label>
+          <ion-select  [(ngModel)]="mesaSeleccionado" (ionChange)="seleccionarMesa();" placeholder="Seleccione uno" okText="Aceptar" cancelText="Canelar">
+              <ion-select-option *ngFor="let m of mesaLista" [value]="m">{{m.n_mesa + ' - '+ m.h_m}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+    
+    
+    </ion-list>
+    <!-- <ion-button 
+      *ngIf="cantonSeleccionado!=null && parroquiaSeleccionado!=null && recintoSeleccionado!=null && mesaSeleccionado!=null"
+      size="2" 
+      style="--background: red" 
+      (click)="capturarActa()" 
+      expand="block">Capturar Acta
+    </ion-button> -->
+
+
+
+
+
+  <ion-card  >
+    <img *ngIf="acta_0" [src]="acta_0" />
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button 
+          size="2" 
+          style="--background: green;float: right;margin: 10px;" 
+          (click)="capturarActa('acta_0')"
+          >Toma 1
+      </ion-button>
+    </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <img *ngIf="acta_1" [src]="acta_1" />
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button 
+          size="2" 
+          style="--background: green;float: right;margin: 10px;" 
+          (click)="capturarActa('acta_1')"
+          >Toma 2
+      </ion-button>
+    </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <img *ngIf="acta_2" [src]="acta_2" />
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button 
+          size="2" 
+          style="--background: green;float: right;margin: 10px;" 
+          (click)="capturarActa('acta_2')"
+          >Toma 3
+      </ion-button>
+    </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="enviarActa()">
+      <ion-icon name="send"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+
+
+
+  <!-- <ion-item>
+      <ion-img [src]="'data:image/png;base64,'+acta_0"></ion-img>
+    <ion-label>img 1</ion-label>
+  </ion-item>
+  <ion-item>
+      <ion-img [src]="'data:image/png;base64,'+acta_1"></ion-img>
+    <ion-label>img 2</ion-label>
+  </ion-item>
+  <ion-item>
+      <ion-img [src]="'data:image/png;base64,'+acta_2"></ion-img>
+    <ion-label>img 3</ion-label>
+  </ion-item> -->
+
+ 
+
+
+<!-- <img src="../../../assets/images/fondo_pantalla.png" style="width: 100%;height: 100%;"/> -->

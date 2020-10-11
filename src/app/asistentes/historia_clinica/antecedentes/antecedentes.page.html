@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		ANTECEDENTES {{ntipo_antecedente}} REGISTRADOS
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-card *ngFor="let a of antecedentes">
+		<ion-card-header>
+			<ion-card-subtitle>{{a.espex}} | {{a.fechax}}</ion-card-subtitle>
+			<ion-card-title>{{a.medicox}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			{{a.antecedentex}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

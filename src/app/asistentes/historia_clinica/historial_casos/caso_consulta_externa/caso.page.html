@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		ATENCIONES REALIZADAS SOBRE EL CASO DE ESTUDIO SELECCIONADO
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+	
+
+<ion-card *ngFor="let h of historial" (click)="abrirAtencion(h)">
+	<ion-card-header>
+	  <ion-card-subtitle>{{h.fechax}} | {{h.horax}}</ion-card-subtitle>
+	  <ion-card-title>{{h.especialidadx}}</ion-card-title>
+	  
+	</ion-card-header>
+	<ion-card-content>
+		{{h.medicox}}
+	</ion-card-content>
+</ion-card>
+
+  
+</ion-content>

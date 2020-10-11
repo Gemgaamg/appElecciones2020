@@ -1,0 +1,116 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 007 "SOLICITUD DE INTERCONSULTA"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+	<ion-grid class="botones" *ngIf="form07.estadof07!=1 || form07.n!=0">
+		<ion-row>
+			<ion-col size="6">
+				<ion-item color="success" *ngIf="form07.n!=0" (click)="abrirSolicitudesLaboratorios()">
+					<ion-label>Laboratorio</ion-label>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6" *ngIf="form07.estadof07!=1" (click)="abrir07CERespuesta()">
+				<ion-item color="primary">
+					<ion-label>Respuesta</ion-label>
+				</ion-item>
+			</ion-col>
+
+		</ion-row>
+	</ion-grid>
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form07.carpetax}} | Cedula: {{form07.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form07.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form07.edadx}} | Sexo:{{form07.sexox}}<br>
+			Especialidad:{{form07.especialidadx}}<br>
+			Medico:{{form07.medicox}}<br>
+			Estado:{{form07.estadox}}<br>
+			Solicitado:{{form07.fecha_solicitadox}}<br>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.cuadro!==undefined && form07.cuadro.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Cuadro clinico inicial</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.cuadro}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form07.resexa!==undefined && form07.resexa.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Laboratorio</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.resexa}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.resima!==undefined && form07.resima.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Imagenes</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.resima}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.resotro!==undefined && form07.resotro.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="pricetag" slot="start"></ion-icon> -->
+			<ion-label>Otros</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.resotro}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.detalle!==undefined && form07.detalle.trim()!==''">
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Diagnostico CIE-10</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.detalle}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form07.planes!==undefined && form07.planes.trim()!==''">
+		<ion-item>
+
+			<ion-label>Planes terapeuticos y educacionales realizados</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form07.planes}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,137 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 002 "ANAMNESIS Y EXAMEN FISICO"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form02.carpetax}} | Cedula: {{form02.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form02.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form02.edadx}} | Sexo:{{form02.sexox}}<br>
+			Area:{{form02.areax}}<br>
+			Medico:{{form02.medicox}}<br>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.motivo!==undefined && form02.motivo.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>1.- Motivo de la consulta</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.motivo}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form02.ant_perso!==undefined && form02.ant_perso.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>2.- Antecedentes personales</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.ant_perso}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.ant_fami!==undefined && form02.ant_fami.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>3.- Antecedentes familiares</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.ant_fami}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.enf_actual!==undefined && form02.enf_actual.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>4.- Enfermedad o problema actual</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.enf_actual}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.rev_org!==undefined && form02.rev_org.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>5.- Revision actual de organos y sistemas</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.rev_org}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.sig_vita!==undefined && form02.sig_vita.trim()!==''">
+		<ion-item>
+			<ion-icon name="heart" slot="start"></ion-icon>
+			<ion-label>6.- Signos vitales y antropometria</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.sig_vita}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.exa_fisico!==undefined && form02.exa_fisico.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>7.- Examen fisico regional</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.exa_fisico}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.cie!==undefined && form02.cie.trim()!==''">
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>8.- Diagnostico CIE-10</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.cie}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form02.plan_trata!==undefined && form02.plan_trata.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>9.- Planes de tratamiento</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form02.plan_trata}}
+		</ion-card-content>
+	</ion-card>
+	
+</ion-content>

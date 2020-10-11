@@ -1,0 +1,81 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Receta electronica
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{receta.carpetax}} | Cedula: {{receta.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{receta.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{receta.edadx}} | Sexo:{{receta.sexox}}<br>
+			Area:{{receta.areax}}<br>
+			Medico:{{receta.medicox}}
+		</ion-card-content>
+	</ion-card>
+
+	<!-- <ion-card>
+		<ion-item>
+			<ion-icon name="heart" slot="start"></ion-icon>
+			<ion-label>Signos vitales</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{receta.sig_vitax}}
+		</ion-card-content>
+	</ion-card> -->
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Medicamentos CB</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{receta.descrip1x}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-item>
+			<!-- <ion-icon name="heart"></ion-icon> -->
+			<ion-label>Medicamentos NCB</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{receta.descrip2x}}
+		</ion-card-content>
+	</ion-card>
+	<!-- <ion-card>
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Cie10</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{receta.ciex}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="receta.planx!==undefined && receta.planx.trim() !==''">
+		<ion-item>
+			<ion-label>Plan de tratamiento</ion-label>
+		</ion-item>
+
+		<ion-card-content>
+			{{receta.planx}}
+		</ion-card-content>
+	</ion-card> -->
+</ion-content>

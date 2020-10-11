@@ -1,0 +1,97 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button color=success (click)="verGrafico()">Ver grafico</ion-button>
+		</ion-buttons>
+		Historial de SV
+	</ion-toolbar>
+</ion-header>
+<!-- asd -->
+<!-- {{idform07}} -->
+
+
+<ion-content>
+	<ion-card *ngFor="let h of historial" (click)="confirmado(h)">
+
+
+		<ion-item class="fecha" fill="outline">
+			<!-- <ion-icon *ngIf="f.tipoformx==='FORM010'" name="flask"></ion-icon> -->
+			<!-- <ion-icon slot="start" class="item-azul" *ngIf="f.tipoformx==='RECETA'" name="clipboard"></ion-icon> -->
+			<ion-icon slot="start" class="item-verde" name="pulse"></ion-icon>
+			<!-- {{h.usuario}} -->
+			<ion-button fill="outline" slot="end">{{h.fyh}}</ion-button>
+		</ion-item>
+		<ion-item class="contenido">
+			<ion-label>
+
+				<ion-grid class="grid-signos-vitales">
+
+					<ion-row>
+						<ion-col>
+							<div>TA <span>{{h.ta}}</span></div>
+						</ion-col>
+						<ion-col>
+							<div>TEMP <span>{{h.temperatura}} °C</span></div>
+						</ion-col>
+						<ion-col>
+							<div>F.CARD <span>{{h.fcardiaca}} xMin</span></div>
+						</ion-col>
+
+					</ion-row>
+					<ion-row>
+						<ion-col>
+							<div>F.RESP <span>{{h.frespiatoria}} xMin</span></div>
+						</ion-col>
+						<ion-col>
+							<div>SAT <span>{{h.saturacion}} %</span></div>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col>
+							<div>TALLA <span>{{h.talla}} Cm</span></div>
+						</ion-col>
+						<ion-col>
+							<div>PESO <span>{{h.peso}} Kg</span></div>
+						</ion-col>
+					</ion-row>
+
+
+				</ion-grid>
+				<p style="font-style: oblique;"><br>{{h.usuario}}</p>
+			</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+	</ion-card>
+
+
+	<!-- 
+	<ion-list>
+		<ion-radio-group >
+			<ion-list-header>
+				<ion-label>sv</ion-label>
+			</ion-list-header>
+			<ng-container *ngFor="let h of historial">
+				<ion-item style="padding: 8px 0px;">
+					<br>
+					TA {{h.ta}}<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					PESO {{h.peso}}<br>
+					PROFESIONAL {{h.usuario}}<br>
+					<ion-radio slot="start" [value]="h" (ionSelect)="confirmado(h)"></ion-radio>
+				</ion-item>
+			</ng-container>
+
+
+		</ion-radio-group>
+	</ion-list> -->
+
+</ion-content>

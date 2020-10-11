@@ -1,0 +1,34 @@
+
+
+<ion-content  style="--background: cadetblue;--padding-top: 18%;">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <!-- <h3 class=titulo-app style="color: white">APP HRZ</h3> -->
+          <img style="width: 60%" src="../../assets/images/titulo.png"/>
+          <!-- <h4 class=titulo>Inicia Sesion.</h4> -->
+        </div>
+        <div padding>
+          <ion-item style="--background: cadetblue;color: white">
+            <ion-input  type="text" #cedula placeholder="Cedula" ></ion-input>
+          </ion-item>
+  
+          <ion-item style="--background: cadetblue;color: white">
+            <ion-input type="password" #clave placeholder="Clave" ></ion-input>
+          </ion-item>
+        </div>
+        {{estado}}
+        <div padding>
+          <ion-button size="6" style="--background: red" (click)="logIn(cedula.value, clave.value, $event)" expand="block">Login</ion-button>
+          <!-- <ion-button size="6" (click)="getEstado()" expand="block">Verificar estado</ion-button> -->
+          <!-- <ion-button size="6" (click)="logOut()" expand="block">Cerrar Sesion</ion-button> -->
+          <!-- <ion-button size="6" (click)="pruebaObjeto()" expand="block">Prueba objeto</ion-button> -->
+        </div>
+        <!-- <div *ngIf="usserLogged">
+          {{userLogged.username}}
+        </div> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

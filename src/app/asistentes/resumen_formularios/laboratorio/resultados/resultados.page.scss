@@ -1,0 +1,63 @@
+.fecha {
+  font-size: 12px;
+}
+.contenido {
+  font-size: 14px;
+  ion-label {
+    white-space: pre-line;
+  }
+}
+
+
+ion-card-content{
+  white-space: break-spaces;
+}
+.titulo-1{
+  color:#000000;
+  font-weight: bold;
+  // border-top: 10px solid black;
+  margin-top: 10px;
+  background: #000000;
+  ion-card-title{
+    color: white;
+    font-weight: bold;
+  }
+}
+.titulo-2{
+  font-weight: bold;
+  color:
+  #008446;
+  // font-style: oblique;
+}
+.titulo-3{
+  font-weight: bold;
+  color:
+  #13f189;
+  // font-style: oblique;
+}
+
+
+.resultado-1{
+  color:#000000;
+  font-style: oblique;
+}
+.resultado-2{
+  color:#000000;
+  font-style: oblique;
+}
+.bold{
+  font-weight: bold;
+}
+.nota-adicional{
+  margin-left: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: oblique;
+}
+.observacion{
+  margin-left: 30px;
+  font-size: 12px;
+  // -font-weight: bold;
+  font-style: oblique;
+  white-space: pre-line;
+}

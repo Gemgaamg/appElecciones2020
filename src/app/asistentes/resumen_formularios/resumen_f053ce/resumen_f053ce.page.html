@@ -1,0 +1,103 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		Formulario 053 "REFERENCIA Y CONTRAREFERENCIA"
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+
+
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>Carpeta: {{form053.carpetax}} | Cedula: {{form053.cedulax}}</ion-card-subtitle>
+			<ion-card-title>{{form053.nombre_pacientex}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			Edad:{{form053.edadx}} | Sexo:{{form053.sexox}}<br>
+			Establecimiento:{{form053.establecimientox}}<br>
+			Tipo:{{form053.tipo_extablecimientox}}<br>
+			Distrito:{{form053.distritox}}<br>
+			Especialidad:{{form053.especialidadx}}<br>
+			Medico:{{form053.medicox}}<br>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form053.cuadro!==undefined && form053.cuadro.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Resumen de cuadro clinico</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.cuadro}}
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="form053.hallasgos!==undefined && form053.hallasgos.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Hallasgos relevantes de examenes y procedimientos diagnosticos</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.hallasgos}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form053.tratamiento!==undefined && form053.tratamiento.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Tratamiento y procedimientos terapeuticos realizados</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.tratamiento}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form053.detalle!==undefined && form053.detalle.trim()!==''">
+		<ion-item>
+			<ion-icon name="pricetag" slot="start"></ion-icon>
+			<ion-label>Diagnostico CIE-10</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.detalle}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form053.seguircs!==undefined && form053.seguircs.trim()!==''">
+		<ion-item>
+			<!-- <ion-icon name="heart" slot="start"></ion-icon> -->
+			<ion-label>Tratamiento recomendado a seguir en establecimiento de salid de menor nivel de complejidad</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.seguircs}}
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="form053.justi!==undefined && form053.justi.trim()!==''">
+		<ion-item>
+			
+			<ion-label>Justificacion de la referencia</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+
+		<ion-card-content>
+			{{form053.justi}}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

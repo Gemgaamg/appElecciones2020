@@ -1,0 +1,121 @@
+<ion-header>
+
+	<ion-toolbar style="--background: transparent;">
+		<ion-buttons slot="start">
+
+			<ion-menu-button style='color:white'></ion-menu-button>
+
+		</ion-buttons>
+
+		<ion-title style="color: white">Partes diarias Enfermeria</ion-title>
+
+		<ion-buttons slot="primary">
+			<ion-button (click)="abrirFiltroAreas()">
+				<ion-icon *ngIf='filtros.texto!="todos"' style='color:blue' name="options"></ion-icon>
+				<ion-icon *ngIf='filtros.texto=="todos"' style='color:white' name="options"></ion-icon>
+
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-searchbar placeholder="N. Paciente" [attr.value]="srcFiltrosPaciente()" (click)="abrirFiltros()"
+		style="text-transform: uppercase" (ionClear)="limpiarBuscador()" (keyup.enter)="buscar()" mode=ios>
+	</ion-searchbar>
+	<span 
+		style="
+			padding: 10px;
+			font-weight: bold;
+			color: white;
+			font-style: italic;">
+			{{filtros.texto}}
+	</span>
+	<ion-tab-bar slot="top" style="--background: unset;">
+		<ion-tab-button (click)="ir_a('pacientes')">
+			
+			<ion-icon [color]="tab_actual=='pacientes'?'primary':'light'" name="contacts" mode=ios></ion-icon>
+			<ion-label [color]="tab_actual=='pacientes'?'primary':'light'">Vista pacientes</ion-label>
+			<!-- <ion-badge>6</ion-badge> -->
+		</ion-tab-button>
+
+
+		<ion-tab-button (click)="ir_a('tareas')">
+			<ion-icon [color]="tab_actual=='tareas'?'primary':'light'" name="alarm" mode=ios></ion-icon>
+			<ion-label [color]="tab_actual=='tareas'?'primary':'light'">Vista tareas</ion-label>
+		</ion-tab-button>
+	</ion-tab-bar>
+	<!-- </ion-tabs> -->
+</ion-header>
+<ion-content style="--background:unset">
+	<ion-slides [options]="slideOpts" #puntos (ionSlideDidChange)="slideChanged()" style="height: 100%">
+		<ion-slide style="align-items: normal;height: 100%;">
+
+			<div style="height: 100%;width: 100%;    overflow-y: scroll;">
+				<ion-grid>
+					<ion-row>
+						<ion-col size=12 *ngFor="let pac of pacientes_emergencia">
+							<ion-item style="--background: #00000075;" (click)="abrirModalConfirmacion(pac)" shape="round">
+								<ion-avatar slot="start">
+									<img src="../../../../assets/images/avatar.svg">
+								</ion-avatar>
+								<ion-label class="info-paciente">
+									<h3 class="nombre">
+										{{pac.pacientex}}
+									</h3>
+									<p>F. NACIMIENTO: {{pac.fnacix}} {{pac.anosx}}</p>
+									<p>ARCHIVO: {{pac.numero_archivox}}</p>
+									<p>CI:{{pac.cedulax}}</p>
+								</ion-label>
+							</ion-item>
+			
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			
+			
+				<ion-infinite-scroll (ionInfinite)="cargar10Mas($event)">
+					<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando..">
+					</ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+			</div>
+		</ion-slide>
+		
+		<ion-slide style="align-items: normal;height: 100%;">
+			<div style="height: 100%;width: 100%;    overflow-y: scroll;">
+				<ion-grid>
+					<ion-row>
+						<ion-col size=12 *ngFor="let pac of pacientes_emergencia_tareas">
+							<ion-item style="--background: #00000075;" shape="round">
+								<ion-avatar slot="start">
+									<img src="../../../../assets/images/avatar.svg">
+								</ion-avatar>
+								<ion-label class="info-paciente">
+									<h3 class="nombre">
+										{{pac.pacientex}}
+									</h3>
+									<p>F. NACIMIENTO: {{pac.fnacix}} {{pac.anosx}}</p>
+									<p>ARCHIVO: {{pac.numero_archivox}}</p>
+									<p>CI:{{pac.cedulax}}</p>
+								</ion-label>
+							</ion-item>
+			
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			
+			
+				<ion-infinite-scroll (ionInfinite)="cargar10Mas($event)">
+					<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando..">
+					</ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>
+	
+
+<div style=" position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+		
+		background: radial-gradient(ellipse at center, rgb(186, 255, 245) 0%, rgb(104, 161, 174) 100%);
+"></div>

@@ -1,0 +1,37 @@
+<ion-header>
+	<ion-toolbar >
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		FORMULARIOS REALIZADOS EN ESTA ATENCION EN EMERGENCIA
+	</ion-toolbar>
+</ion-header>
+<ion-content >
+	
+	
+	
+	<ion-card *ngFor="let f of formularios" (click)="abrirFormulario(f)">
+
+
+		<ion-item class="fecha" fill="outline">
+			<ion-icon slot="start" class="item-verde" *ngIf="f.tipoformx==='FORM010'" name="flask"></ion-icon>
+			<ion-icon slot="start" class="item-azul" *ngIf="f.tipoformx==='RECETA'" name="clipboard"></ion-icon>
+			{{f.fecha_procx}} | {{f.horax}}
+			<ion-button fill="outline" slot="end" [class]="'item '+
+				(f.nestadox==='TERMINADO' || f.nestadox == 'IMPRESO' || f.nestadox == 'ATENDIDO' || f.nestadox=='RESPONDIDO'?' item-verde': 
+				 f.nestadox =='BORRADOR' ?'item-gris ':
+				 'item-azul-marino ')">{{f.nestadox}}</ion-button>
+		</ion-item>
+		<ion-item class="contenido">
+			<ion-label>
+				{{f.formx}}
+				<p style="font-style: oblique;"><br>{{f.rolx}}</p>
+			</ion-label>
+			<!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+		</ion-item>
+	</ion-card>
+</ion-content>

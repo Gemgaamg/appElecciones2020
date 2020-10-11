@@ -1,0 +1,31 @@
+ion-card-subtitle {
+    background: #E91E63;
+    color: white;
+    padding: 5px;
+}
+
+ion-card-title {
+    background-color:#000000b0;
+    color: white;
+    margin: unset;
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding: 10px
+}
+
+ion-card {
+    background:#140c00b0;
+    color: white
+}
+ion-card-header{
+    padding: unset;
+}
+.div-cargando{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 7px;
+    color: white;
+    font-style: italic;
+}

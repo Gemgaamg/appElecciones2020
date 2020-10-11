@@ -1,0 +1,158 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button #btnAtras text="Atras">
+			</ion-back-button>
+
+		</ion-buttons>
+		<ion-title style="color: black">Evolucion en emergencia enfermeria</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="verHistoriaClinica()">
+				<ion-icon slot="icon-only" name="information-circle"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-slides [options]="slideOpts" #puntos (ionSlideDidChange)="slideChanged()" style="height: 100%;">
+		<ion-slide style="display: block;padding-top: 20px">
+			<div style="height: 100%;    overflow-y: scroll;text-transform: uppercase;">
+				<ion-item>
+					<ion-button *ngIf="form05.lleva_soapie === 1" (click)="cambiar_notas()"
+						style="float: right;position: absolute;right: 0px;">
+						Cambiar a notas de evolucion
+					</ion-button>
+					<ion-button *ngIf="form05.lleva_soapie === 0" (click)="cambiar_soapie()"
+						style="float: right;position: absolute;right: 0px;">
+						Cambiar a soapie
+					</ion-button>
+
+				</ion-item>
+				<ng-template [ngIf]="form05.lleva_soapie === 1">
+					<ion-grid fixed>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">Cuadro clinico inicial
+									</ion-label>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.encabezado"
+										(keyup)="guardado=false" style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">S</ion-label>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.soapie_s" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">O</ion-label>
+									<ion-button color=warning style="position: absolute;right: 0;" (click)="abrirModalSignosVitales()">
+										<==
+									</ion-button>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.soapie_o" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="6">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">A
+									</ion-label>
+									<ion-button style="position: absolute;right: 0;" (click)="abrirModalQuitarNanda()">
+										[X]
+									</ion-button>
+									<ion-textarea (click)="abrirModalAgregarNanda()" rows="4"
+										[(ngModel)]="form05.soapie.soapie_a" readonly="true" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+							<ion-col size="6">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">(otros)</ion-label>
+									<ion-textarea rows="4" [(ngModel)]="form05.soapie.soapie_a_otros"
+										(keyup)="guardado=false" style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">P</ion-label>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.soapie_p" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">I</ion-label>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.soapie_i" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="12">
+								<ion-item>
+									<ion-label floating position="stacked"
+										style="font-weight: bold;font-size: 20px;color: blue;">E</ion-label>
+									<ion-textarea autosize [(ngModel)]="form05.soapie.soapie_e" (keyup)="guardado=false"
+										style="text-transform: uppercase;"></ion-textarea>
+								</ion-item>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+
+				</ng-template>
+				<ng-template [ngIf]="form05.lleva_soapie === 0">
+					<ion-item>
+						<ion-label floating position="stacked" style="font-weight: bold;font-size: 20px;color: blue;">
+							Notas de evolucion</ion-label>
+						<ion-textarea autosize [(ngModel)]="form05.cuadro_clinico" (keyup)="guardado=false"
+							style="text-transform: uppercase;"></ion-textarea>
+					</ion-item>
+
+				</ng-template>
+
+			</div>
+		</ion-slide>
+
+	</ion-slides>
+
+</ion-content>
+<ion-footer no-border>
+	<ion-grid fixed>
+		<ion-row>
+			<ion-col size="5" offset=1>
+				<ion-button expand=full [disabled]="!controlBtnGuardar()" color="primary" shape="round" mode=ios
+					style="height: 60px;" (click)="guardar()">
+					Guardar
+				</ion-button>
+
+			</ion-col>
+			<ion-col size="5">
+
+				<ion-button expand=full [disabled]="!controlBtnTerminarEvolucion()||form05.idestado!=0" color="primary"
+					shape="round" mode=ios style="height: 60px;" (click)="abrirModalSeleccionarHoraParaTerminar()">
+					Terminar
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

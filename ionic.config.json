@@ -1,0 +1,15 @@
+{
+  "name": "appHrzIonic",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://10.68.44.108:8081/",
+      "rejectUnauthorized": false
+    }
+  ]
+}

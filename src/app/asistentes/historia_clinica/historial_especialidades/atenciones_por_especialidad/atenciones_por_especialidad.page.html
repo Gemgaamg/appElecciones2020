@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-toolbar>
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		Atenciones en la especialidad
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--padding-top: 20px;">
+	
+
+<ion-card *ngFor="let f of formularios" (click)="abrirFormulario(f)">
+	<ion-card-header>
+	  <ion-card-subtitle>{{f.fechax}} a las [{{f.horax}}]</ion-card-subtitle>
+	  <ion-card-title>{{f.tipox}}</ion-card-title>
+	  
+	</ion-card-header>
+</ion-card>
+
+</ion-content>

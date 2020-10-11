@@ -1,0 +1,95 @@
+<ion-header>
+	<ion-toolbar style="--background: transparent;">
+
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon name="arrow-round-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		Historia clinica
+	</ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: transparent;--padding-top: 20px;">
+	<div class="avatar">
+		<div>
+			<img src="/assets/images/avatar.svg">
+
+		</div>
+		<span class="nombre">{{info_paciente.nombre}}</span>
+	</div>
+	<ion-item-divider>
+		<ion-label>
+			Informacion personal
+		</ion-label>
+	</ion-item-divider>
+	<ion-item class="item-imagen">
+		<div>
+			<img src="/assets/icon/custom/cumpleaños.svg">
+		</div>
+		<ion-label>
+			<h2>{{info_paciente.fecha_nacimiento}}</h2>
+			<p>Fecha de nacimiento</p>
+		</ion-label>
+	</ion-item>
+	<ion-item class="item-imagen">
+		<div>
+			<img src="/assets/icon/custom/hombre.ico">
+		</div>
+		<ion-label>
+			<h2>{{info_paciente.sexo}}</h2>
+			<p>Sexo</p>
+		</ion-label>
+	</ion-item>
+
+
+	<ion-item class="item-imagen">
+		<div>
+			<img src="/assets/icon/custom/padre.svg">
+		</div>
+		<ion-label>
+			<h2 class="capitalize">{{info_paciente.padre}}</h2>
+			<p>Padre</p>
+		</ion-label>
+	</ion-item>
+	<ion-item class="item-imagen">
+		<div>
+			<img src="/assets/icon/custom/madre.svg">
+		</div>
+		<ion-label>
+			<h2 class="capitalize">{{info_paciente.madre}}</h2>
+			<p>Madre</p>
+		</ion-label>
+	</ion-item>
+	<ion-item class="item-imagen">
+		<div>
+			<!-- <img src="/assets/icon/custom/madre.svg"> -->
+			<ion-icon name="pin"></ion-icon>
+		</div>
+		<ion-label>
+			<h2>{{info_paciente.direccion}}</h2>
+			<p>Manta - Manabi - Ecuador</p>
+		</ion-label>
+	</ion-item>
+	<br>
+	<br>
+	<ion-chip (click)="abrirHistorialAtencionDiaria()">
+		<ion-label>Fecha de atencion</ion-label>
+	</ion-chip>
+	<br>
+	<ion-chip (click)="abrirCarpetaPorEspecialidad()" color="secondary">
+		<ion-label>Carpetas de especialidad</ion-label>
+	</ion-chip>
+	<br>
+	<ion-chip (click)="abrirAntecedentesPersonales()" color="tertiary">
+		<ion-label>Antecedentes personales</ion-label>
+	</ion-chip>
+	<br>
+	<ion-chip (click)="abrirAntecedentesFamiliares()" color="tertiary">
+		<ion-label>Antecedentes Familiares</ion-label>
+	</ion-chip>
+	<br>
+	<br>
+	<br>
+</ion-content>

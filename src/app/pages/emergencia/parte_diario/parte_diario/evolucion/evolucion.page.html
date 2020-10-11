@@ -1,0 +1,137 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-back-button #btnAtras text="Atras">
+			</ion-back-button>
+
+		</ion-buttons>
+		<ion-title style="color: black">Evolucion en emergencia</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="verHistoriaClinica()">
+				<ion-icon slot="icon-only" name="information-circle"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-slides [options]="slideOpts" #puntos (ionSlideDidChange)="slideChanged()" style="height: 100%;">
+		<ion-slide style="display: block;padding-top: 20px">
+
+			<ion-item>
+				<ion-label floating position="stacked" style="font-weight: bold;font-size: 17px">Notas de evolucion
+				</ion-label>
+				<ion-textarea autosize [(ngModel)]="form05.cuadro_clinico"
+					(ngModelChange)="form05.cuadro_clinico = $event.toUpperCase()">
+
+				</ion-textarea>
+			</ion-item>
+
+
+		</ion-slide>
+		<ion-slide style="display: block;padding-top: 20px">
+
+			<div style="font-weight: bold;font-size: 17px;margin-bottom: 10px">
+					Prescripciones
+			</div>
+			<ion-list>
+				<ion-reorder-group (ionItemReorder)="reordenarPlan($event)" disabled="false">
+			
+				  <ion-item *ngFor="let plan of form05.planes_tratamiento" (click)="opcionesPlan(plan)">
+					<ion-label text-wrap>{{plan.servicio}} - {{plan.descripcion_plan}}</ion-label>
+					<ion-reorder slot="start"></ion-reorder>
+				  </ion-item>
+				</ion-reorder-group>
+			</ion-list>
+			<!-- <ion-list style="height: 100%;
+			overflow-y: scroll;">
+				<ion-item >
+					
+					<span *ngIf=""
+						style="color:orange; height: 15px;float: left;cursor: pointer"
+						(click)="">
+						Ver detalle
+					</span>
+					<ion-icon *ngIf="(plan.idtipo_servicio == 0 || plan.idtipo_servicio == 3 || plan.idtipo_servicio == 4 || plan.idtipo_servicio == 5 || plan.idtipo_servicio == 6) && form05.idestado==0"
+						(click)="" name="close-circle"></ion-icon>
+				</ion-item>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				
+			</ion-list> -->
+
+
+
+
+
+			<ion-fab vertical="bottom" horizontal="end">
+				<ion-fab-button>
+					<ion-icon name="add"></ion-icon>
+				</ion-fab-button>
+				<ion-fab-list side="top">
+					<ion-fab-button (click)="nuevoPlanTratamientoNovedades()" data-desc="Indicaciones">
+						<ion-icon name="add-circle"></ion-icon>
+					</ion-fab-button>
+					<ion-fab-button (click)="abrirSolicitudLaboratorio()" data-desc="Solicitud Laboratorio">
+						<ion-icon name="contact"></ion-icon>
+					</ion-fab-button>
+					<ion-fab-button (click)="abrirReceta()" data-desc="Receta">
+						<ion-icon name="custom-emergencia"></ion-icon>
+					</ion-fab-button>
+					<ion-fab-button (click)="abrirModalDieta()" data-desc="Nutricion">
+						<ion-icon name="nutrition"></ion-icon>
+					</ion-fab-button>
+					
+					<ion-fab-button (click)="nuevoPlanTratamientoIndicaciones()" data-desc="Indicaciones">
+						<ion-icon name="add-circle"></ion-icon>
+					</ion-fab-button>
+					
+					<ion-fab-button (click)="controlGlicemia()" data-desc="Glicemia">
+						<ion-icon name="custom-glicemia"></ion-icon>
+					</ion-fab-button>
+					<ion-fab-button (click)="controlSignosVitales()" data-desc="C.S.V">
+						<ion-icon name="heart"></ion-icon>
+					</ion-fab-button>
+					<br><br><br><br>
+					<ion-fab-button (click)="anularEvolucion()" data-desc="Anular Evolucion">
+						<ion-icon name="trash"></ion-icon>
+					</ion-fab-button>
+				</ion-fab-list>
+			</ion-fab>
+		</ion-slide>
+
+
+	</ion-slides>
+
+</ion-content>
+<ion-footer no-border>
+	<ion-grid fixed>
+		<ion-row>
+			<ion-col size="5" offset=1>
+				<ion-button expand=full [disabled]="!btnAnteriorActivo()" color="secondary" shape="round" mode=ios
+					style="height: 60px;" (click)="anterior()">
+					Anterior
+				</ion-button>
+
+			</ion-col>
+			<ion-col size="5">
+
+				<ion-button expand=full *ngIf="orden_puntos[this.punto] != 2"
+					[disabled]="!btnSiguienteActivo() || deslizando==true || form05.cuadro_clinico === undefined || form05.cuadro_clinico === ''" color="primary" shape="round" mode=ios
+					style="height: 60px;" (click)="siguiente()">
+					Siguiente
+				</ion-button>
+				<ion-button expand=full *ngIf="orden_puntos[this.punto] == 2"
+					[disabled]="!btnSiguienteActivo() || deslizando==true" color="primary" shape="round" mode=ios
+					style="height: 60px;" (click)="siguiente()">
+					Terminar
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

@@ -1,0 +1,74 @@
+<ion-header>
+	<ion-toolbar>
+		
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">Cerrar</ion-button>
+		</ion-buttons>
+		Informacion de Solicitud
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!-- asd -->
+	<!-- {{idform07}} -->
+
+	<ion-list>
+		<ion-list-header>
+			1.- CARACTERISTICAS DE LA SOLICITUD
+		</ion-list-header>
+		<div>
+			{{form07.caract_soli}}
+		</div>
+		<ion-list-header>
+			2.- CUADRO CLINICO ACTUAL
+		</ion-list-header>
+		<div>
+			{{form07.cuadro}}
+		</div>
+
+
+
+		<ion-list-header>
+			LABORATORIO
+		</ion-list-header>
+		<div>
+			{{form07.resexa}}
+		</div>
+
+
+
+		<ion-list-header>
+			IMAGENES
+		</ion-list-header>
+		<div>
+			{{form07.resima}}
+		</div>
+
+
+
+		<ion-list-header>
+			OTROS
+		</ion-list-header>
+		<div>
+			{{form07.resotro}}
+		</div>
+
+		<ion-list-header>
+			4.- DIAGNOSTICO CIE-10
+
+		</ion-list-header>
+		<div>
+			{{form07.detalle}}
+		</div>
+
+		<ion-list-header>
+			6.- PLANES TERAPEUTICOS Y EDUCACIONALES REALIZADOS
+		</ion-list-header>
+		<div>
+			{{form07.planes}}
+		</div>
+
+
+	</ion-list>
+
+</ion-content>
