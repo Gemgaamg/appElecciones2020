@@ -1,4 +1,4 @@
-package ec.gob.hrz.apphrzionic;
+package ec.conteo_rapido.app;
 
 import android.os.Bundle;
 
