@@ -53,7 +53,7 @@ var HrzServerService = /** @class */ (function () {
         }, function (error) {
             // this.cerrarLoading()
             _this.cerrarLoading();
-            _this.abrirAdvertencia('Advertencia', 'No se pudo iniciar la sesion', 'Error desconocido, asegurese de estar conectado a la red del Hospital Rodriguez Zambrano');
+            _this.abrirAdvertencia('Advertencia', 'No se pudo iniciar la sesion', 'Error desconocido, asegurese de estar conectado a la red');
             console.log(error);
         }, function () {
             _this.cerrarLoading();

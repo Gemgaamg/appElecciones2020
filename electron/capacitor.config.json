@@ -1,7 +1,0 @@
-{
-  "appId": "ec.gob.hrz.sishrz",
-  "appName": "HRZ App",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www"
-}

@@ -83,7 +83,7 @@ export class HrzServerService {
             this.cerrarLoading();
             this.abrirAdvertencia('Advertencia', 
                 'No se pudo iniciar la sesion', 
-                'Error desconocido, asegurese de estar conectado a la red del Hospital Rodriguez Zambrano'
+                'Error desconocido, asegurese de estar conectado a la red'
                 +error.message+' - '+error.status+' - '+error.statusText+' - '+error.url+' - '+error.ok+' - '+error.name);
             console.log(error);
         },

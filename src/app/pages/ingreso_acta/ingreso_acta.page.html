@@ -1,8 +1,9 @@
 <ion-content>
+  <ion-menu-button style="position: absolute;color: white;"></ion-menu-button>
     <ion-list>
       <ion-list-header>
         <ion-label>
-          Single Selection
+          Captura de Actas
         </ion-label>
       </ion-list-header>
     
@@ -43,52 +44,69 @@
 
 
 
+    <ion-grid>
+      <ion-row>
+        <ion-col>
 
-
-  <ion-card  >
-    <img *ngIf="acta_0" [src]="acta_0" />
-    <ion-card-header>
-      <ion-card-subtitle>
-        <ion-button 
-          size="2" 
-          style="--background: green;float: right;margin: 10px;" 
-          (click)="capturarActa('acta_0')"
-          >Toma 1
-      </ion-button>
-    </ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <img *ngIf="acta_1" [src]="acta_1" />
-    <ion-card-header>
-      <ion-card-subtitle>
-        <ion-button 
-          size="2" 
-          style="--background: green;float: right;margin: 10px;" 
-          (click)="capturarActa('acta_1')"
-          >Toma 2
-      </ion-button>
-    </ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <img *ngIf="acta_2" [src]="acta_2" />
-    <ion-card-header>
-      <ion-card-subtitle>
-        <ion-button 
-          size="2" 
-          style="--background: green;float: right;margin: 10px;" 
-          (click)="capturarActa('acta_2')"
-          >Toma 3
-      </ion-button>
-    </ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="enviarActa()">
-      <ion-icon name="send"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+          <ion-card>
+            <img *ngIf="acta_0" [src]="acta_0" />
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-button 
+                  size="2" 
+                  style="--background: green;float: right;margin: 10px;" 
+                  (click)="capturarActa('acta_0')"
+                  >Toma 1
+              </ion-button>
+            </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <img *ngIf="acta_1" [src]="acta_1" />
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-button 
+                  size="2" 
+                  style="--background: green;float: right;margin: 10px;" 
+                  (click)="capturarActa('acta_1')"
+                  >Toma 2
+              </ion-button>
+            </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <img *ngIf="acta_2" [src]="acta_2" />
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-button 
+                  size="2" 
+                  style="--background: green;float: right;margin: 10px;" 
+                  (click)="capturarActa('acta_2')"
+                  >Toma 3
+              </ion-button>
+            </ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="enviarActa()">
+        <ion-icon name="send"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="enviarActa()">
+        <ion-icon name="send"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>
 
 

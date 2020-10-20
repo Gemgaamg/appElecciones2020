@@ -151,23 +151,6 @@ export class IngresoActaPage implements OnInit {
   acta_0: String = null;
   acta_1: String = null;
   acta_2: String = null;
-  // async capturarActa(){
-  //   const image = await Camera.getPhoto({
-  //     quality: 90,
-  //     allowEditing: false,
-  //     source:CameraSource.Camera,
-  //     resultType: CameraResultType.Base64
-  //   });
-  //   if(this.acta_0==null){
-  //     this.acta_0 = image.base64String;
-  //   }else if(this.acta_1==null){
-  //     this.acta_1 = image.base64String;
-  //   }else if(this.acta_2==null){
-  //     this.acta_2 = image.base64String;
-  //   }
-    
-  //   // imageElement.src = imageUrl;
-  // }
 
   async capturarActa(acta){
     const image = await Camera.getPhoto({
@@ -182,7 +165,27 @@ export class IngresoActaPage implements OnInit {
     console.log(image.dataUrl);
     this[acta] = image.dataUrl;
   }
-  
+  limpiarFormulario(){
+    this.cantonLista = [];
+    this.parroquiaLista = [];
+    this.recintoLista = [];
+    this.mesaLista = [];
+    this.cantonSeleccionado = null;
+    this.parroquiaSeleccionado = null;
+    this.recintoSeleccionado = null;
+    this.mesaSeleccionado = null;
+    this.cantonRefreshed = false;
+    this.parroquiaRefreshed = false;
+    this.recintoRefreshed = false;
+    this.acta_0 = null;
+    this.acta_1 = null;
+    this.acta_2 = null;
+    setTimeout(()=>{
+      this.cantonRefreshed = true;
+      this.parroquiaRefreshed = true;
+      this.recintoRefreshed = true;
+  })
+  }
   async readFile(base64,callback: Function) {
     const fd = new FormData();
     await fetch(base64)
@@ -192,37 +195,7 @@ export class IngresoActaPage implements OnInit {
       callback(file);
     });
   }
-    //   fd.append('acta_0', file)
-      
-    // // Let's upload the file
-    // // Don't set contentType manually → https://github.com/github/fetch/issues/505#issuecomment-293064470
-    // const API_URL = 'https://example.com/add_image'
-    // fetch(API_URL, {method: 'POST', body: fd)
-    // .then(res => res.json()) 
-    // .then(res => console.log(res))
-
-
-
-    // const reader = new FileReader();
-    // reader.onloadend = () => {
-    //   const imgBlob = new Blob([reader.result], {
-    //     type: file.type
-    //   });
-    //   const formData = new FormData();
-    //   formData.append('idcanton', 'Hello');
-    //   formData.append('idparroquia', 'Hello');
-    //   formData.append('idrecinto', 'Hello');
-    //   formData.append('idmesa', 'a');
-    //   formData.append('accion', 'Hello');
-    //   formData.append('acta_0', imgBlob, file.name);
-    //   formData.append('acta_1', imgBlob, file.name);
-    //   formData.append('acta_2', imgBlob, file.name);
-    //   this.uploadFile(formData).subscribe(dataRes => {
-    //     console.log(dataRes);
-    //   });
-    // };
-    // reader.readAsArrayBuffer(file);
-  // }
+   
   uploadFile(formData) {
     return this.http.post(APIUrl+'/recepcionImagen', formData);
   }
@@ -273,6 +246,7 @@ export class IngresoActaPage implements OnInit {
                     this.hrzServerService.abrirAdvertencia(null,
                       'Bien',
                       "Se subio el acta");
+                      this.limpiarFormulario();
                   }else{
                     this.hrzServerService.abrirAdvertencia(null,
                       'Advertencia',

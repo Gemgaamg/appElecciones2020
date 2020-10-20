@@ -1,6 +1,6 @@
 
 
-<ion-content  style="--background: cadetblue;--padding-top: 18%;">
+<ion-content  style="--background: #f1f2f0;--padding-top: 18%;">
   <ion-grid>
     <ion-row justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -10,17 +10,17 @@
           <!-- <h4 class=titulo>Inicia Sesion.</h4> -->
         </div>
         <div padding>
-          <ion-item style="--background: cadetblue;color: white">
+          <ion-item style="--background: #f1f2f0;color: black">
             <ion-input  type="text" #cedula placeholder="Cedula" ></ion-input>
           </ion-item>
   
-          <ion-item style="--background: cadetblue;color: white">
+          <ion-item style="--background: #f1f2f0;color: black">
             <ion-input type="password" #clave placeholder="Clave" ></ion-input>
           </ion-item>
         </div>
         {{estado}}
         <div padding>
-          <ion-button size="6" style="--background: red" (click)="logIn(cedula.value, clave.value, $event)" expand="block">Login</ion-button>
+          <ion-button size="6" style="--background: red" (click)="logIn(cedula.value, clave.value, $event)" expand="block">Iniciar Sesion</ion-button>
           <!-- <ion-button size="6" (click)="getEstado()" expand="block">Verificar estado</ion-button> -->
           <!-- <ion-button size="6" (click)="logOut()" expand="block">Cerrar Sesion</ion-button> -->
           <!-- <ion-button size="6" (click)="pruebaObjeto()" expand="block">Prueba objeto</ion-button> -->

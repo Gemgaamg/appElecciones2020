@@ -1,6 +1,6 @@
 {
-  "appId": "ec.gob.hrz.sishrz",
-  "appName": "HRZ App",
+  "appId": "ec.conteo_rapido",
+  "appName": "Conteo Rapido",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www"

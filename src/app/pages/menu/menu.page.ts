@@ -27,11 +27,7 @@ export class MenuPage implements OnInit {
       url: '/menu/main',
       icon: 'home'
     },
-    {
-      title: 'Historia clinica de pacientes',
-      url: '/menu/pacientes',
-      icon: 'happy'
-    },
+    
     {
       title: 'Modulos',
       children: this.children,
