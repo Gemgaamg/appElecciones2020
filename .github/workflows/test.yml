@@ -2,7 +2,7 @@ name: Accion de prueba
 on:
     pull_request:
         branches:
-            -master
+            - master
 
 jobs:
     deploy:
