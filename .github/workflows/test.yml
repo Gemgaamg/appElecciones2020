@@ -11,3 +11,7 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v2
+
+            - name: Force error
+              run: |
+                exit 1
