@@ -12,6 +12,6 @@ jobs:
             - name: Checkout Code
               uses: actions/checkout@v2
 
-            # - name: Force error 4
+            # - name: Force error 7
             #   run: |
             #     exit 1
