@@ -1,0 +1,17 @@
+name: Accion de prueba
+on:
+    pull_request:
+        branches:
+            - master
+
+jobs:
+    deploy:
+        name: Deploy Accion de prueba
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+
+            - name: Force error
+              run: |
+                exit 1
